@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('address');
             $table->string('budget');
-            $table->foreignId('role_id');
+            $table->foreignId('role_id')->default(1);
             $table->timestamps();
         });
     }

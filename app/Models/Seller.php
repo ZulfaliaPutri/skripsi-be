@@ -13,7 +13,7 @@ class Seller extends Model
 
     public function user()
     {
-        return $this->hasOne(Seller::class);
+        return $this->belongsTo(Seller::class);
     }
 
     public function product()

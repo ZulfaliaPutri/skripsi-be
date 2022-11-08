@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('food', function (Blueprint $table) {
             $table->id();
-            $table->string('expired_day_count');
+            $table->unsignedBigInteger('expired_day_count');
             $table->foreignId('product_id');
         });
     }

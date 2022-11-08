@@ -30,12 +30,12 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function seller()
     {
-        return $this->belongsTo(Seller::class);
+        return $this->hasOne(Seller::class);
     }
 
     public function transaction()
