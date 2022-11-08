@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('quantity');
             $table->unsignedBigInteger('view_count');
             $table->foreignId('category_id');
-            $table->binary('image_path');
+            $table->string('image_path');
             $table->timestamps();
         });
     }
