@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    color: #2d2d2d;
+    font-size: 14px;
+}
+
+.form-control{
+    font-size: 14px;
+}
+
+
+@media screen and (min-width: 994px) {
+.form-control{
+    width: 350px;
+}   
+}
+
+@media screen and (max-width: 994px) {
+.navbar-nav{
+    text-align: center;
+}
+}
+/*Judul Kategori*/
+.section-p1{
+    padding: 40px 10px;
+    text-align: center;
+}
+
+/*Kategori*/
+
+.img-categori {
+    width: 80px;
+}
+
+.row-container {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+#olahan{
+    padding: 25px 15px;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+    border: 1px solid #cce7d0;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+#olahan:hover{
+    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
+}
+
+#olahan p{
+    padding: 9px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: #088178;
+    background-color: #fff2e5;
+}
+
+#instant{
+    padding: 25px 15px;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+    border: 1px solid #cce7d0;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+#instant:hover{
+    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
+}
+#instant p{
+    padding: 9px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: #088178;
+    background-color: hsl(98, 54%, 83%);
+}
+
+#wanita{
+    padding: 25px 15px;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+    border: 1px solid #cce7d0;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+#wanita:hover{
+    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
+}
+#wanita p{
+    padding: 9px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: #088178;
+    background-color: #fddde4;
+}
+
+#pria{
+    padding: 25px 15px;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+    border: 1px solid #cce7d0;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+#pria:hover{
+    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
+}
+#pria p{
+    padding: 9px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: #088178;
+    background-color: #d1e8f2;
+}
+
+/*all product */
+.section-p2{
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    /* padding: 40px 240px; */
+}
+
+#allproduct{
+    text-align: center;
+}
+
+#allproduct .pro-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+#allproduct .pro{
+    width: 15%;
+    min-width: 200px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    position: relative;
+}
+
+#allproduct .pro:hover{
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
+}
+
+#allproduct .pro img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+#allproduct .pro .des{
+    text-align: start;
+    padding: 10px 0;
+}
+
+#allproduct .pro .des span{
+    color: #060663;
+    font-size: 12px;
+}
+
+#allproduct .pro .des h5{
+    padding-top: 7px;
+    color: #1a1a1a;
+    font-size: 14px;
+}
+
+#allproduct .pro .des i{
+    font-size: 12px;
+    color: rgb(243, 181, 25);
+}
+
+#allproduct .pro .des h4{
+    padding-top: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #088178;
+}
+
+#allproduct .pro .cart{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #e8f6ea;
+    font-weight: 500;
+    color: #088178;
+    border: 1px solid #cce7d0;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+
+.see-more{
+    color: #088178;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.see-more:hover{
+    color: #053835;
+}
+
+/* banner*/
+.section-m1{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ), url("../assets/banner.png");
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#banner h3{
+    color: whitesmoke;
+    font-style: bold;
+    font-size: 16px;
+}
+
+#banner h2{
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+/* banner bagi dua*/
+.section-p3{
+    padding: 40px 250px;
+}
+
+#sm-banner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#sm-banner .banner-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ), url("../assets/foodbanner.png");
+    min-width: 640px;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+}
+
+#sm-banner .banner-box2{
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ), url("../assets/bajubanner.png");
+}
+
+#sm-banner h4{
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#sm-banner h2 {
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+button.normal {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 18px;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid white;
+    outline: none;
+    transition: 0.2s;
+}
+
+#sm-banner .banner-box:hover button{
+    background: #088178;
+    border: 1px solid #088178;
+}
+
+
+
+.img-carousel{
+    height: 25%;
+    object-fit: cover;
+}
+
+
+/*Footer*/
+
+.section-p4{
+    padding: 20px 100px;
+}
+
+footer{
+    background-color: #A8B380;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer .col{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* margin-bottom: 20px; */
+}
+
+footer .logo {
+    margin-bottom: 30px;
+}
+
+footer h4{
+    font-size: 14px;
+}
+
+footer p{
+    font-size: 13px;
+    margin: 0 0 4px 0;
+}  
+
+footer a{
+    font-size: 13px;
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 10px;
+}  
+
+footer .copyright {
+    width: 100%;
+    text-align: center;
+}
