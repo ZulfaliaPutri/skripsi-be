@@ -9,13 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="../style/aboutus.css" />
+    <link rel="stylesheet" type="text/css" href="style/aboutus.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <!-- Import fontawesome icon -->
-    <script src="https://kit.fontawesome.com/e3be59a47f.js" crossorigin="anonymous"></script>
-    <!-- Import boostrap icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>WeShare!</title>
 </head>
 
@@ -23,13 +19,13 @@
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/landingpage">
+            <a class="navbar-brand" href="/dashboard">
                 <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                 WeShare!
             </a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav e-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
@@ -37,20 +33,44 @@
                         Product
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/food">Food</a></li>
-                        <li><a class="dropdown-item" href="/clothes">Clothes</a></li>
+                        <li><a class="dropdown-item" href="/makanan">Food</a></li>
+                        <li><a class="dropdown-item" href="/pakaian">Clothes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sharing
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/sharingmakanan">Food</a></li>
+                        <li><a class="dropdown-item" href="/sharingpakaian">Clothes</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/aboutus">About Us</a>
+                    <a class="nav-link" href="/aboutdash">About Us</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register">Sign Up</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Welcome back, {{ auth()->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -120,13 +140,13 @@
             <div class="row">
                 <div class="col">
                     <img class="logo" src="../assets/logo.png" alt="logo">
-                    <p>Website yang ditunjukkan untuk mendukung pengurangan limbah dan menjadikan kegiatan berbagi
-                        seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
+                    <p>Website yang ditunjukkan untuk mendukung pengurangan limbah
+                        dan menjadikan kegiatan berbagi seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
                 </div>
 
                 <div class="col">
                     <h4>Information</h4>
-                    <a href="/aboutus">About Us</a>
+                    <a href="/aboutdash">About Us</a>
                 </div>
 
                 <div class="col">

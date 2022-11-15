@@ -23,30 +23,39 @@
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/dashboard">
                 <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                 WeShare!
             </a>
-            <div class="d-flex justify-content-center">
-
-            </div>
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav e-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Product
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Food</a></li>
-                        <li><a class="dropdown-item" href="#">Clothes</a></li>
+                        <li><a class="dropdown-item" href="/makanan">Food</a></li>
+                        <li><a class="dropdown-item" href="/pakaian">Clothes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sharing
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/sharingmakanan">Food</a></li>
+                        <li><a class="dropdown-item" href="/sharingpakaian">Clothes</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/aboutus">About Us</a>
+                    <a class="nav-link" href="/aboutdash">About Us</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -68,7 +77,6 @@
                     </ul>
                 </li>
             </ul>
-        </div>
         </div>
     </nav>
     <!--Navbar Akhir-->
@@ -162,11 +170,10 @@
 
     <!--All Product-->
     <section id="allproduct" class="container section-p2">
-        <h3>All Product</h3>
-        <p>Product Food and Clothes</p>
+        <h3>Recommendation Product</h3>
         <div class="row">
             <div class="d-flex align-items-center justify-content-end">
-                <a class="see-more" href="rekomendasi.html">See All</a>
+                <a class="see-more" href="/rekomendasi">See All</a>
             </div>
         </div>
         <div class="pro-container">
@@ -236,6 +243,7 @@
                     <h4>Rp78.000</h4>
                 </div>
                 <a href="#"><i class="bi bi-cart cart"></i></a>
+
             </div>
 
             <div class="pro">
@@ -253,6 +261,7 @@
                     <h4>Rp78.000</h4>
                 </div>
                 <a href="#"><i class="bi bi-cart cart"></i></a>
+
             </div>
         </div>
     </section>
@@ -267,117 +276,18 @@
     </section>
     <!--Banner Akhir-->
 
-    <!--All Product-->
-    <section id="allproduct" class="container section-p2">
-        <h3>Recommendation Product</h3>
-        <div class="row">
-            <div class="d-flex align-items-center justify-content-end">
-                <a class="see-more" href="rekomendasi.html">See All</a>
-            </div>
-        </div>
-        <div class="pro-container">
-            <div class="pro">
-                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                <div class="des">
-                    <span>Nasi Babi Guling</span>
-                    <h5>Enak</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rp78.000</h4>
-                </div>
-                <a href="#"><i class="bi bi-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                <div class="des">
-                    <span>Nasi Babi Guling</span>
-                    <h5>Enak</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rp78.000</h4>
-                </div>
-                <a href="#"><i class="bi bi-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                <div class="des">
-                    <span>Nasi Babi Guling</span>
-                    <h5>Enak</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rp78.000</h4>
-                </div>
-                <a href="#"><i class="bi bi-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                <div class="des">
-                    <span>Nasi Babi Guling</span>
-                    <h5>Enak</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rp78.000</h4>
-                </div>
-                <a href="#"><i class="bi bi-cart cart"></i></a>
-
-            </div>
-
-            <div class="pro">
-                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                <div class="des">
-                    <span>Nasi Babi Guling</span>
-                    <h5>Enak</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rp78.000</h4>
-                </div>
-                <a href="#"><i class="bi bi-cart cart"></i></a>
-
-            </div>
-        </div>
-    </section>
-    <!--All Product Akhir-->
-
     <!--Banner Bagi 2-->
     <section id="sm-banner" class="container section-p2">
         <div class="banner-box">
             <h4>Pilih Produkmu</h4>
             <h2>Product Food</h2>
-            <button class="normal">Pilih Makanan</button>
+            <a href="/makanan"><button class="normal">Pilih Makanan</button></a>
         </div>
 
         <div class="banner-box banner-box2">
             <h4>Tentukkan Pilihan</h4>
             <h2>Product Clothes</h2>
-            <button class="normal">Pilih Koleksi</button>
+            <a href="/pakaian"><button class="normal">Pilih Koleksi</button></a>
         </div>
     </section>
     <!--Banner Bagi dua Selesai-->
@@ -388,13 +298,13 @@
             <div class="row">
                 <div class="col">
                     <img class="logo" src="../assets/logo.png" alt="logo">
-                    <p>Website yang ditunjukkan untuk mendukung pengurangan limbah</p>
-                    <p>dan menjadikan kegiatan berbagi seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
+                    <p>Website yang ditunjukkan untuk mendukung pengurangan limbah
+                        dan menjadikan kegiatan berbagi seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
                 </div>
 
                 <div class="col">
                     <h4>Information</h4>
-                    <a href="aboutus.html">About Us</a>
+                    <a href="/aboutdash">About Us</a>
                 </div>
 
                 <div class="col">
