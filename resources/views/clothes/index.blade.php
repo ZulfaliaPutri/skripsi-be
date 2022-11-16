@@ -112,12 +112,21 @@
                 <!--Akhir Chekbox Untuk Rating-->
 
                 {{-- Awal Kotak Harga --}}
-                <div class="mt-3">
-                    <label for="harga" class="form-label">Batas Harga</label>
-                    <div class="harga">
-                        <input type="email" class="form-control me-1" id="exampleFormControlInput1"
-                            placeholder="name@example.com">
-                    </div>
+                <div class="me-5">
+                    <form action="" method="">
+                        <div class="row mt-3">
+                            <label for="batas-harga" id="batas-harga">Batas Harga</label>
+                            <div class="col">
+                                <label for="harga-min" id="harga-min"></label>
+                                <input type="text" name="harga-min" id="harga-min" placeholder="Rp MIN">
+                            </div>
+                            <div class="garis-nama ms-3"></div>
+                            <div class="col">
+                                <label for="harga-max" id="harga-max"></label>
+                                <input type="text" name="harga-max" id="harga-max" placeholder="Rp MAX">
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 {{-- Akhir Kotak Harga --}}
 
