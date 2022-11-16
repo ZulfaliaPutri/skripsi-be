@@ -29,11 +29,11 @@
                         <form class="login-form" action="/register" method="post">
                             @csrf
 
-                            <!--Name-->
+                            <!--Full Name-->
                             <div>
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Nick Name</label>
                                 <input type="name" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" id="name" placeholder="Your name" required
+                                    name="name" id="name" placeholder="Your nick name" required
                                     value="{{ old('name') }}" />
                                 @error('name')
                                     <div class="invalid-feedback">

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MakananController;
 use App\Http\Controllers\PakaianController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\RekomendasilandingController;
@@ -47,8 +48,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/rekomendasi', [RekomendasiController::class, 'index']);
 Route::get('/rekomendasilanding', [RekomendasilandingController::class, 'index']);
 
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/aboutus', [AboutController::class, 'index']);
 Route::get("/aboutdash", [AboutdashController::class, 'index']);
