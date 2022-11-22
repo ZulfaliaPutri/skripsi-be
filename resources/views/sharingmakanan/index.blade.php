@@ -17,7 +17,6 @@
     <!-- Import boostrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>WeShare!</title>
-    <title>WeShare!</title>
 </head>
 
 <body>
@@ -28,7 +27,7 @@
                 <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                 WeShare!
             </a>
-            <ul class="navbar-nav e-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>
@@ -58,12 +57,12 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Welcome back, {{ auth()->user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
+                        <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> My Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -226,11 +225,6 @@
         </div>
     </div>
 
-
-
-
-
-    <!--Footer-->
     <!--Footer-->
     <footer class="section-p4 pt-5">
         <div class="container">

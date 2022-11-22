@@ -27,7 +27,7 @@
                 <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                 WeShare!
             </a>
-            <ul class="navbar-nav e-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>
@@ -62,7 +62,7 @@
                         Welcome back, {{ auth()->user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
+                        <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> My Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -144,7 +144,7 @@
                                 <label for="harga-min" id="harga-min"></label>
                                 <input type="text" name="harga-min" id="harga-min" placeholder="Rp MIN">
                             </div>
-                            <div class="garis-nama ms-3"></div>
+                            <div class="garis-nama ms-3 mt-3"></div>
                             <div class="col">
                                 <label for="harga-max" id="harga-max"></label>
                                 <input type="text" name="harga-max" id="harga-max" placeholder="Rp MAX">

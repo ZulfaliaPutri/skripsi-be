@@ -27,7 +27,7 @@
                 <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                 WeShare!
             </a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
                 </li>
@@ -120,7 +120,7 @@
                                 <label for="harga-min" id="harga-min"></label>
                                 <input type="text" name="harga-min" id="harga-min" placeholder="Rp MIN">
                             </div>
-                            <div class="garis-nama ms-3"></div>
+                            <div class="garis-nama ms-3 mt-3"></div>
                             <div class="col">
                                 <label for="harga-max" id="harga-max"></label>
                                 <input type="text" name="harga-max" id="harga-max" placeholder="Rp MAX">

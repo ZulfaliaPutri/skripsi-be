@@ -33,8 +33,7 @@ body{
 /*garis nama*/
 .garis-nama{
     border-bottom: 2px solid #2d2d2d;
-    margin-top: 10px;
-    margin-bottom: 2px;
+    max-width: 2%;
 }
 
 /*makanan */

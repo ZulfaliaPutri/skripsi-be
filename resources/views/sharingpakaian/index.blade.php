@@ -28,7 +28,7 @@
                 <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                 WeShare!
             </a>
-            <ul class="navbar-nav e-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>

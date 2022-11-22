@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->unsignedBigInteger('price');
-            $table->unsignedBigInteger('quantity');
+            $table->unsignedBigInteger('quantity')->nullable();
             $table->unsignedBigInteger('view_count');
             $table->foreignId('category_id');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }
