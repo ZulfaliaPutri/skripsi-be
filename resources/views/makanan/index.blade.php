@@ -136,18 +136,21 @@
                 <!--Akhir Chekbox Untuk Rating-->
 
                 {{-- Awal Kotak Harga --}}
-                <div class="me-5">
+                <div class="">
                     <form action="" method="">
-                        <div class="row mt-3">
-                            <label for="batas-harga" id="batas-harga">Batas Harga</label>
-                            <div class="col">
-                                <label for="harga-min" id="harga-min"></label>
-                                <input type="text" name="harga-min" id="harga-min" placeholder="Rp MIN">
-                            </div>
-                            <div class="garis-nama ms-3 mt-3"></div>
-                            <div class="col">
-                                <label for="harga-max" id="harga-max"></label>
-                                <input type="text" name="harga-max" id="harga-max" placeholder="Rp MAX">
+                        <div class="mt-3">
+                            <label class="mb-2" for="batas-harga" id="batas-harga">Batas Harga</label>
+                            <div class="row gx-1">
+                                <div class="col-5">
+                                    <input type="text" 
+                                    class="form-control"
+                                    name="harga-min" id="harga-min" placeholder="Rp MIN">
+                                </div>
+                                <div class="col-2 garis-nama "></div>
+                                <div class="col-5">
+                                    <input type="text"
+                                    class="form-control" name="harga-max" id="harga-max" placeholder="Rp MAX">
+                                </div>
                             </div>
                         </div>
                     </form>
