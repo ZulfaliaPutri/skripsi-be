@@ -31,15 +31,17 @@ class RekomendasiController extends Controller
         foreach (User::all() as $user) {
             $userRating = [];
             foreach ($user->rating as $rating) {
-                $userRating[$rating->product_id] = $rating->rating / 10;
+                $userRating[$rating->product_id] = $rating->rating;
             }
             array_push($data, $userRating);
         }
 
-        dd($data);
-
         $slopeone = new Algorithm();
         $slopeone->update($data);
-        $slopeone->predict($data);
+        $results = $slopeone->predict([
+            5 => 2
+        ]);
+
+        dd($results);
     }
 }

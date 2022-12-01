@@ -47,9 +47,9 @@ class DataSeeder extends Seeder
         }
 
         // Ratings
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             Rating::create([
-                'product_id' => random_int(1, 10),
+                'product_id' => random_int(1, 5),
                 'user_id' => random_int(1, 6),
                 'rating' => random_int(1, 5)
             ]);
