@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="style/landingpage.css" />
+    <link rel="stylesheet" type="text/css" href="style/produkdash.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- Import fontawesome icon -->
@@ -81,102 +81,107 @@
     </nav>
     <!--Navbar Akhir-->
 
-    <!--Carousel-->
+    <!--Breadcrumb-->
     <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
+        <nav aria-label="breadcrumb" style="background-color: #f9f9f9" class="mt-3">
+            <ol class="breadcrumb p-3">
+                <li class="breadcrumb-item">
+                    <a href="#" class="text-decoration-none">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#" class="text-decoration-none">Kategori</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Produk</li>
+            </ol>
+        </nav>
+    </div>
+    <!--Akhir Breadcrumb-->
+
+    <!--Single Produk-->
+    <div class="container">
+        <div class="row row-produk">
+            <div class="col-lg-5">
+                <figure class="figure">
+                    <img src="../assets/produk/nasi babi1.jpg" class="figure-img img-fluid"
+                        style="border-radius: 5px; width: 450px" alt="produk babi" />
+                    <figcaption class="figure-caption d-flex justify-content-evenly">
+                        <a href="#">
+                            <img src="../assets/produk/nasi babi1.jpg" class="figure-img img-fluid"
+                                style="border-radius: 5px; width: 70px" alt="produk babi" />
+                        </a>
+                    </figcaption>
+                </figure>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../assets/Food.png" class="d-block w-100 img-fluid img-carousel" alt="Food" />
-                    <div class="carousel-caption d-none d-md-block" id="slidesatu">
-                        <h5>Berbelanja dan Sharing Dengan Mudah</h5>
+
+            <div class="col-lg-7">
+                <h3>Nasi Babi Guling</h3>
+                <h5>Warung Bu Ajus</h5>
+                <div class="garis-nama"></div>
+                <div class="star">
+                    <a href="#" class="d-inline text-decoration-none">
+                        Rating
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i></a>
+                </div>
+                <h3 class="text-muted mb-3">Rp 150.000</h3>
+                <button type="button" class="btn btn-dark btn-sm">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <span class="mx-2">2</span>
+                <button type="button" class="btn btn-success btn-sm">
+                    <i class="fas fa-plus"></i>
+                </button>
+
+                <div class="btn-produk mt-5">
+                    <!-- <a href="#" class="btn btn-dark text-white btn-lg me-2 btn-custom"
+              ><i class="fas fa-shopping-cart fs-6 me-2"></i>Masukkan
+              Keranjang</a
+            > -->
+                    <a href="#" class="btn btn-success text-white btn-lg btn-custom">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+        <!--Akhir Single Product-->
+
+        <!--Deskripsi-->
+        <div class="row row-produk">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="deskrip nav-link active" id="deskripsi-tab" data-bs-toggle="tab"
+                            data-bs-target="#deskripsi" type="button" role="tab" aria-controls="deskripsi"
+                            aria-selected="true">
+                            Deskripsi Produk
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content p-3" id="myTabContent">
+                    <div class="tab-pane fade show active" id="deskripsi" role="tabpanel"
+                        aria-labelledby="deskripsi-tab">
+                        <p class="spesifikasi">
+                        <h6>Spesifikasi Produk:</h6>
+                        Expired: 22 Juni 2022 </br>
+                        Kategori: Makanan Olahan </br> </p>
+                        <p class="deskripsi">
+                        <h6>Deskripsi Produk:</h6>
+                        Makanan khas bali yang berasal dari hewan
+                        yaitu Babi. Dimana pada makanan ini memiliki cita rasa yang
+                        sangat menarik.<br> Makanan ini merupakan makanan yang tidak habis
+                        di jual dan dilakukan sharing.</br>
+                        </p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="../assets/slidepat.png" class="d-block w-100 img-fluid img-carousel" alt="Pakaian" />
-                    <div class="carousel-caption d-none d-md-block" id="slidedua">
-                        <h5>Jadilah Agen Penggerak Untuk Yang Membutuhkan</h5>
-                    </div>
-                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </div>
-    <!--Carousel Akhir-->
+    <!--Akhir Deskripsi-->
 
-    <!--Judul kategori-->
-    <section id="judul" class="section-p1">
-        <h2>Our Categories</h2>
-    </section>
-    <!--Judul Akhir-->
-
-    <!--Kategori awal-->
-    <div class="container overflow-hidden">
-        <div class="row gx-5 text-center row-container">
-            <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                <div class="" id="olahan">
-                    <div class="menu-kategori">
-                        <a href="makananolahan.html"><img src="../assets/kategori/olahan.png" alt="produk olahan"
-                                class="img-categori mt-2" /></a>
-                        <p class="mt-2">Processed Food</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                <div class="" id="instant">
-                    <div class="menu-kategori">
-                        <a href="#"><img src="../assets/kategori/instant.png" alt="produk olahan"
-                                class="img-categori mt-2" /></a>
-                        <p class="mt-2">Instant Food</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                <div class="" id="wanita">
-                    <div class="menu-kategori">
-                        <a href="#"><img src="../assets/kategori/wanita.png" alt="produk olahan"
-                                class="img-categori mt-2" /></a>
-                        <p class="mt-2">Women Clothes</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                <div class="" id="pria">
-                    <div class="menu-kategori">
-                        <a href="#"><img src="../assets/kategori/pria.png" alt="produk olahan"
-                                class="img-categori mt-2" /></a>
-                        <p class="mt-2">Man Clothes</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    <!--Kategori Akhir-->
-
-    <!--All Product-->
-    <section id="allproduct" class="container section-p2">
-        <h3>Recommendation Product</h3>
-        <div class="row">
-            <div class="d-flex align-items-center justify-content-end">
-                <a class="see-more" href="/rekomendasi">See All</a>
-            </div>
-        </div>
-        <div class="pro-container">
+    <!--Rekomendasi Product-->
+    <section id="allproduct" class="section-p2">
+        <div class="container pro-container">
             <div class="pro">
                 <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
                 <div class="des">
@@ -191,7 +196,24 @@
                     </div>
                     <h4>Rp78.000</h4>
                 </div>
-                <a href="/produkdash"><i class="bi bi-cart cart"></i></a>
+                <a href="#"><i class="bi bi-cart cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
+                <div class="des">
+                    <span>Nasi Babi Guling</span>
+                    <h5>Enak</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Rp78.000</h4>
+                </div>
+                <a href="#"><i class="bi bi-cart cart"></i></a>
             </div>
 
             <div class="pro">
@@ -243,7 +265,29 @@
                     <h4>Rp78.000</h4>
                 </div>
                 <a href="#"><i class="bi bi-cart cart"></i></a>
+            </div>
+        </div>
+    </section>
+    <!--Rekomendasi Product Akhir-->
 
+    <!--Rekomendasi Product 1-->
+    <section id="allproduct" class="section-p2">
+        <div class="container pro-container">
+            <div class="pro">
+                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
+                <div class="des">
+                    <span>Nasi Babi Guling</span>
+                    <h5>Enak</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Rp78.000</h4>
+                </div>
+                <a href="#"><i class="bi bi-cart cart"></i></a>
             </div>
 
             <div class="pro">
@@ -261,36 +305,60 @@
                     <h4>Rp78.000</h4>
                 </div>
                 <a href="#"><i class="bi bi-cart cart"></i></a>
+            </div>
 
+            <div class="pro">
+                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
+                <div class="des">
+                    <span>Nasi Babi Guling</span>
+                    <h5>Enak</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Rp78.000</h4>
+                </div>
+                <a href="#"><i class="bi bi-cart cart"></i></a>
+            </div>
+
+            <div class="pro">
+                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
+                <div class="des">
+                    <span>Nasi Babi Guling</span>
+                    <h5>Enak</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Rp78.000</h4>
+                </div>
+                <a href="#"><i class="bi bi-cart cart"></i></a>
+            </div>
+            <div class="pro">
+                <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
+                <div class="des">
+                    <span>Nasi Babi Guling</span>
+                    <h5>Enak</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Rp78.000</h4>
+                </div>
+                <a href="#"><i class="bi bi-cart cart"></i></a>
             </div>
         </div>
     </section>
-    <!--All Product Akhir-->
-
-    <!--Banner-->
-    <section class="container section-m1">
-        <div id="banner">
-            <h3>Gerakkan Kegiatan</h3>
-            <h2><i>Food Sharing </i> dan <i>Preloved Clothes</i> Untuk Teman-Teman Membutuhkan</h2>
-        </div>
-    </section>
-    <!--Banner Akhir-->
-
-    <!--Banner Bagi 2-->
-    <section id="sm-banner" class="container section-p2">
-        <div class="banner-box">
-            <h4>Pilih Produkmu</h4>
-            <h2>Product Food</h2>
-            <a href="/makanan"><button class="normal">Pilih Makanan</button></a>
-        </div>
-
-        <div class="banner-box banner-box2">
-            <h4>Tentukkan Pilihan</h4>
-            <h2>Product Clothes</h2>
-            <a href="/pakaian"><button class="normal">Pilih Koleksi</button></a>
-        </div>
-    </section>
-    <!--Banner Bagi dua Selesai-->
+    <!--Rekomendasi Product 1 Akhir-->
 
     <!--Footer-->
     <footer class="section-p4 pt-5">
@@ -331,6 +399,7 @@
             </div>
     </footer>
     <!--Footer Akhir-->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MakananController;
 use App\Http\Controllers\PakaianController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ProdukdashController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RekomendasiController;
@@ -63,5 +65,8 @@ Route::get("/pakaian", [PakaianController::class, 'index']);
 Route::get('/sharingmakanan', [SharingMakananController::class, 'index']);
 Route::get('/sharingpakaian', [SharingpakaianController::class, 'index']);
 Route::get('/sharingfood', [SharingfoodController::class, 'index']);
+
+Route::get('/produk', [ProdukController::class, 'index']);
+Route::get('produkdash', [ProdukdashController::class, 'index']);
 
 Route::get('/test', [RekomendasiController::class, 'test']);

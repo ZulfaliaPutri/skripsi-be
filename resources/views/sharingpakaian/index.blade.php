@@ -97,38 +97,18 @@
                         <td>
                             <form autocomplete="off" onsubmit="onFormSubmit()">
                                 <div>
-                                    <label for="productID">
-                                        ID Produk
-                                    </label>
-                                    <input type="text" name="productID" id="productID">
-                                </div>
-
-                                <div>
-                                    <label for="pakaianID">
-                                        ID Pakaian
-                                    </label>
-                                    <input type="text" name="pakaianID" id="pakaianID">
-                                </div>
-
-                                <div>
                                     <label for="namaPakaian">
                                         Nama Pakaian
                                     </label>
                                     <input type="text" name="namaPakaian" id="namaPakaian">
                                 </div>
 
-                                <div class="mb-3" id="bahanPakaian">
-                                    <label for="bahanPakaian" class="form-label">Bahan</label>
+                                <div class="mb-3" id="kategori">
+                                    <label for="kategori" class="form-label">Kategori</label>
                                     <select id="disabledSelect" class="form-select">
                                         <option selected>--Pilih Opsi--</option>
-                                        <option value="1">Freelace</option>
-                                        <option value="2">Katun</option>
-                                        <option value="3">Polyester</option>
-                                        <option value="4">Knitt</option>
-                                        <option value="5">Sifon</option>
-                                        <option value="6">Rajut</option>
-                                        <option value="7">Canvas</option>
-                                        <option value="8">Flanel</option>
+                                        <option value="1">Pria</option>
+                                        <option value="2">Perempuan</option>
                                     </select>
                                 </div>
 
@@ -153,18 +133,24 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3" id="kategori">
-                                    <label for="kategori" class="form-label">Kategori</label>
+                                <div class="mb-3" id="bahanPakaian">
+                                    <label for="bahanPakaian" class="form-label">Bahan</label>
                                     <select id="disabledSelect" class="form-select">
                                         <option selected>--Pilih Opsi--</option>
-                                        <option value="1">Pria</option>
-                                        <option value="2">Perempuan</option>
+                                        <option value="1">Freelace</option>
+                                        <option value="2">Katun</option>
+                                        <option value="3">Polyester</option>
+                                        <option value="4">Knitt</option>
+                                        <option value="5">Sifon</option>
+                                        <option value="6">Rajut</option>
+                                        <option value="7">Canvas</option>
+                                        <option value="8">Flanel</option>
                                     </select>
                                 </div>
 
                                 <div>
                                     <label for="qty">
-                                        Quantity
+                                        Jumlah Barang
                                     </label>
                                     <input type="number" name="qty" id="qty">
                                 </div>
@@ -176,16 +162,16 @@
                                     <input type="number" name="perPrice" id="perPrice">
                                 </div>
 
-                                <div>
-                                    <label for="rating">
-                                        Rating
-                                    </label>
-                                    <input type="number" name="rating" id="rating">
-                                </div>
-
                                 <div class="mb-3">
                                     <label for="fotoProduk" class="form-label">Foto Produk</label>
                                     <input class="form-control" type="file" id="fotoProduk" multiple>
+                                </div>
+
+                                <div>
+                                    <label for="description">
+                                        Deskripsi
+                                    </label>
+                                    <input type="text" name="Deksripsi" id="decription">
                                 </div>
 
                                 <div class="form_action--button">
@@ -203,15 +189,13 @@
                 <table class="list" id="storeList">
                     <thead>
                         <tr>
-                            <th>ID Produk</th>
-                            <th>ID Pakaian</th>
                             <th>Nama Pakaian</th>
-                            <th>Bahan</th>
+                            <th>Kategori</th>
                             <th>Panjang Lengan</th>
                             <th>Ukuran</th>
-                            <th>Kategori</th>
-                            <th>Rating</th>
+                            <th>Bahan</th>
                             <th>Foto Produk</th>
+                            <th>Deskripsi</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -97,20 +97,6 @@
                         <td>
                             <form autocomplete="off" onsubmit="onFormSubmit()">
                                 <div>
-                                    <label for="productID">
-                                        ID Produk
-                                    </label>
-                                    <input type="text" name="productID" id="productID">
-                                </div>
-
-                                <div>
-                                    <label for="makananID">
-                                        ID Makanan
-                                    </label>
-                                    <input type="text" name="makananID" id="makananID">
-                                </div>
-
-                                <div>
                                     <label for="namaMakanan">
                                         Nama Makanan
                                     </label>
@@ -166,7 +152,7 @@
 
                                 <div>
                                     <label for="qty">
-                                        Quantity
+                                        Jumlah Barang
                                     </label>
                                     <input type="number" name="qty" id="qty">
                                 </div>
@@ -178,16 +164,16 @@
                                     <input type="number" name="perPrice" id="perPrice">
                                 </div>
 
-                                <div>
-                                    <label for="rating">
-                                        Rating
-                                    </label>
-                                    <input type="number" name="rating" id="rating">
-                                </div>
-
                                 <div class="mb-3">
                                     <label for="fotoProduk" class="form-label">Foto Produk</label>
                                     <input class="form-control" type="file" id="fotoProduk" multiple>
+                                </div>
+
+                                <div>
+                                    <label for="description">
+                                        Deskripsi
+                                    </label>
+                                    <input type="text" name="Deksripsi" id="decription">
                                 </div>
 
                                 <div class="form_action--button">
@@ -206,14 +192,11 @@
                 <table class="list" id="storeList">
                     <thead>
                         <tr>
-                            <th>ID Produk</th>
-                            <th>ID Makanan</th>
                             <th>Nama Makanan</th>
                             <th>Kategori</th>
                             <th>Masa Penyimpanan</th>
-                            <th>Quantity</th>
+                            <th>Jumlah Barang</th>
                             <th>Harga</th>
-                            <th>Rating</th>
                             <th>Foto Produk</th>
                         </tr>
                     </thead>

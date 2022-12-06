@@ -7,9 +7,11 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "jacobemerick/kmeans": "~1.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "php-ai/php-ml": "^0.10.0",
         "phpjuice/slopeone": "^2.0",
         "tigo/recommendation": "^0.0.2"
     },
