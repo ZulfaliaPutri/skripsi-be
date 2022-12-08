@@ -195,6 +195,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\LoggerFacadeServiceProvider::class,
+
     ],
 
     /*
@@ -210,6 +212,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Logger' => App\Facades\LoggerFacade::class
     ])->toArray(),
 
 ];
