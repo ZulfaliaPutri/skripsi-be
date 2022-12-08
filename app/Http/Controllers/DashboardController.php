@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Facades\LoggerFacade;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class DashboardController extends Controller
 {
