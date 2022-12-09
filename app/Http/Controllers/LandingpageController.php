@@ -13,8 +13,6 @@ class LandingpageController extends Controller
         // get few samples of product
 
         $products = Product::inRandomOrder()->take(5)->with(['Category', 'Rating'])->get();
-        LoggerFacade::writeln($products);
-
 
         return view('landingpage.index', [
             'title' => 'Landingpage',
