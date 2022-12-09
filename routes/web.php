@@ -32,12 +32,7 @@ use App\Models\Clothes;
 |
 */
 
-Route::get('/', function () {
-    return view('landingpage.index', [
-        "title" => "Landingpage"
-    ]);
-});
-Route::get('/landingpage', [LandingpageController::class, 'index']);
+Route::get('/', [LandingpageController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
