@@ -61,7 +61,7 @@ Route::get('/sharingmakanan', [SharingMakananController::class, 'index']);
 Route::get('/sharingpakaian', [SharingpakaianController::class, 'index']);
 Route::get('/sharingfood', [SharingfoodController::class, 'index']);
 
-Route::get('/produk', [ProdukController::class, 'index']);
+Route::get('/produk/{id}', [ProdukController::class, 'index']);
 Route::get('produkdash', [ProdukdashController::class, 'index']);
 
 Route::get('/test', [RekomendasiController::class, 'test']);
