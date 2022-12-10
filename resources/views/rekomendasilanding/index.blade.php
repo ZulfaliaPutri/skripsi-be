@@ -168,7 +168,7 @@
                                 </div>
                                 <h4>Rp{{$item['price']}}</h4>
                             </div>
-                            <a href="/produk"><i class="bi bi-cart cart"></i></a>
+                            <a href="/produk/{{$item['id']}}"><i class="bi bi-cart cart"></i></a>
                         </div>
                         @endforeach
                     </div>
