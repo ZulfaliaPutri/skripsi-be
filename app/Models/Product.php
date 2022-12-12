@@ -33,11 +33,11 @@ class Product extends Model
 
     public function food()
     {
-        return $this->belongsTo(Food::class);
+        return $this->hasOne(Food::class);
     }
 
     public function clothes()
     {
-        return $this->belongsTo(Clothes::class);
+        return $this->hasOne(Clothes::class);
     }
 }

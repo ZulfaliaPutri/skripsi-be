@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\LoggerFacade;
 use App\Models\Product;
 use App\Models\Rating;
 use Illuminate\Http\Request;
@@ -13,13 +14,50 @@ use Phpml\Math\Distance\Euclidean;
 
 class RekomendasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::inRandomOrder()->take(25)->with(['Category', 'Rating'])->get();
+
+        $products = Product::inRandomOrder()->with(['Category', 'Rating']);
+
+        $categories = array();
+        for ($i = 1; $i <= 4; $i++) {
+            if (!empty($request->get("category-" . $i))) {
+                array_push($categories, $i);
+            }
+        }
+
+
+
+        if (count($categories) > 0) {
+            $products = $products->whereIn("category_id", $categories);
+        }
+
+        if (!empty($request->get("minPrice"))) {
+            $minPrice = $request->get("minPrice");
+            $products = $products->where("price", ">=", $minPrice);
+        }
+
+        if (!empty($request->get("maxPrice"))) {
+            $maxPrice = $request->get("maxPrice");
+            $products = $products->where("price", "<=", $maxPrice);
+        }
+
+        // if (!empty($request->get("ratings"))) {
+        //     $ratingsStr = $request->get("ratings");
+        //     $ratings = explode($ratingsStr, ",");
+        // }
+
+        $products = $products->get();
+
         return view('rekomendasi.index', [
             'title' => 'Rekomendasi',
             "products" => $products
         ]);
+    }
+
+    public function search()
+    {
+        LoggerFacade::writeln("ANJENGG");
     }
 
     public function test()
