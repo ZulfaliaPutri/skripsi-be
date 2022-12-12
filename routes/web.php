@@ -41,7 +41,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/rekomendasi', [RekomendasiController::class, 'index']);
+Route::get('/rekomendasi', [RekomendasiController::class, 'index'])->name("rekomendasi");
 Route::get('/rekomendasilanding', [RekomendasilandingController::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');

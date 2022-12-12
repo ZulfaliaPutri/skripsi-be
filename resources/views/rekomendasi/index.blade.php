@@ -85,93 +85,89 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-2 mt-5">
-                <!--Chekbox Untuk Kategori-->
-                <div class="list-group">
-                    <label for="provinsi" class="form-label">Kategori</label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        Makanan Olahan
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        Makanan Instant
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        Pakaian Wanita
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        Pakaian Pria
-                    </label>
-                </div>
-                <!--Akhir Chekbox Untuk Kategori-->
+                <form name="search-form" action="{{ route('rekomendasi') }}" method="GET">
+                    @method('GET')
+                    <div class="list-group">
+                        <label for="provinsi" class="form-label">Kategori</label>
+                        <label class="list-group-item">
+                            <input name="category-1" class="form-check-input me-1" type="checkbox">
+                            Makanan Olahan
+                        </label>
+                        <label class="list-group-item">
+                            <input name="category-2" class="form-check-input me-1" type="checkbox">
+                            Makanan Instant
+                        </label>
+                        <label class="list-group-item">
+                            <input name="category-3" class="form-check-input me-1" type="checkbox">
+                            Pakaian Wanita
+                        </label>
+                        <label class="list-group-item">
+                            <input name="category-4" class="form-check-input me-1" type="checkbox">
+                            Pakaian Pria
+                        </label>
+                    </div>
+                    <!--Akhir Chekbox Untuk Kategori-->
 
-                <!--Chekbox Untuk Rating-->
-                <div class="list-group mt-3">
-                    <label for="provinsi" class="form-label">Rating</label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        <i class="fas fa-star"></i>
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </label>
-                    <label class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </label>
-                </div>
-                <!--Akhir Chekbox Untuk Rating-->
+                    <!--Chekbox Untuk Rating-->
+                    <div class="list-group mt-3">
+                        <label for="provinsi" class="form-label">Rating</label>
+                        <label class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="">
+                            <i class="fas fa-star"></i>
+                        </label>
+                        <label class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </label>
+                        <label class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </label>
+                        <label class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </label>
+                        <label class="list-group-item">
+                            <input class="form-check-input me-1" type="checkbox" value="">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </label>
+                    </div>
+                    <!--Akhir Chekbox Untuk Rating-->
 
-                <!--Awal Kotak Harga-->
-                <div class="">
-                    <form action="" method="">
+                    <!--Awal Kotak Harga-->
+                    <div class="">
                         <div class="mt-3">
                             <label class="mb-2" for="batas-harga" id="batas-harga">Batas Harga</label>
                             <div class="row gx-1">
                                 <div class="col-5">
-                                    <input type="text" class="input-harga" name="harga-min" id="harga-min"
+                                    <input type="text" class="input-harga" name="minPrice" id="harga-min"
                                         placeholder="Rp MIN">
                                 </div>
                                 <div class="col-2">
                                     <hr class="garis-harga">
                                 </div>
                                 <div class="col-5">
-                                    <input type="text" class="input-harga" name="harga-max" id="harga-max"
+                                    <input type="text" class="input-harga" name="maxPrice" id="harga-max"
                                         placeholder="Rp MAX">
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <!--Akhir Kotak Harga-->
+                    </div>
 
+                    <button type="submit" class="btn btn-dark" id="button">TERAPKAN</button>
 
-                {{-- Button Submit --}}
-                <div class="d-grid gap-2 mt-4">
-                    <button type="" class="btn btn-dark" id="button">TERAPKAN</button>
-                </div>
-                {{-- Akhir Button Submit --}}
+                </form>
+                <!--Chekbox Untuk Kategori-->
             </div>
 
             <div class="col-10">
