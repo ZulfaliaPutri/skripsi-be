@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('material');
             $table->string('size');
             $table->string('sleeve_type');
+            $table->foreignId('product_id');
         });
     }
 

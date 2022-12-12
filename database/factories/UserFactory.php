@@ -25,7 +25,7 @@ class UserFactory extends Factory
             "age" => fake()->numberBetween(18, 80),
             "gender" => fake()->numberBetween(0, 1),
             "address" => fake()->address(),
-            "role_id" => Role::factory(),
+            "role_id" => fake()->numberBetween(1, 3),
             "created_at" => time(),
             "updated_at" => time(),
         ];

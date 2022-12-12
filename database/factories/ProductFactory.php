@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             "price" => fake()->numberBetween(10000, 100000),
             "quantity" => fake()->numberBetween(0, 100),
             "view_count" => fake()->numberBetween(0, 100000),
-            "category_id" => Category::factory(),
+            "category_id" => fake()->numberBetween(1, 4),
             "image_path" => fake()->randomElement([
                 "https://upload.wikimedia.org/wikipedia/commons/0/08/Babi_guling.jpg",
                 "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/1/20/92a276f2-2509-4699-8072-35b1ffcb4a90.jpg",

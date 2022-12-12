@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,8 @@ class ClothesFactory extends Factory
         return [
             "material" => fake()->randomElement(['kasa', 'sutra', 'cotton', 'barang kawe']),
             "size" => fake()->randomElement(["S", "M", "L", "XL", "XXL"]),
-            "sleeve_type" => fake()->text(10)
+            "sleeve_type" => fake()->text(10),
+            "product_id" => Product::factory(),
         ];
     }
 }
