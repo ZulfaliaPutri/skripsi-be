@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 use PHPJuice\Slopeone\Algorithm;
@@ -14,8 +15,10 @@ class RekomendasiController extends Controller
 {
     public function index()
     {
+        $products = Product::inRandomOrder()->take(25)->with(['Category', 'Rating'])->get();
         return view('rekomendasi.index', [
-            'title' => 'Rekomendasi'
+            'title' => 'Rekomendasi',
+            "products" => $products
         ]);
     }
 

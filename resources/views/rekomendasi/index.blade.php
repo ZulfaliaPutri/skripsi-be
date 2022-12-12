@@ -179,504 +179,72 @@
                 <section id="allproduct" class="">
                     <h3>Recommendation Product</h3>
                     <div class="pro-container">
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                        @foreach ($products as $item)
+                            <div class="pro">
+                                <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
+                                <div class="des">
+                                    <span>{{ $item['category']['name'] }}</span>
+                                    <h5>{{ $item['name'] }}</h5>
+                                    {{-- todo: change with actual calculation --}}
+                                    <div class="star">
+                                        @for ($i = 0; $i < $item['rating'][0]['rating']; $i++)
+                                            <i class="fas fa-star"></i>
+                                        @endfor
+                                    </div>
+                                    <h4>Rp{{ $item['price'] }}</h4>
                                 </div>
-                                <h4>Rp78.000</h4>
+                                <a href="/produk/{{ $item['id'] }}"><i class="bi bi-cart cart"></i></a>
                             </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
+                        @endforeach
                     </div>
                 </section>
-                <!--Akhir Makanan Olahan-->
-
-                <!--Awal Makanan 1-->
-                <section id="allproduct" class="">
-                    <div class="pro-container">
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-                    </div>
-                </section>
-                <!--Akhir Makanan 2-->
-
-                <!--Awal Makanan 3-->
-                <section id="allproduct" class="">
-                    <div class="pro-container">
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-                    </div>
-                </section>
-                <!--Akhir Makanan 3-->
-
-                <!--Awal Makanan 4-->
-                <section id="allproduct" class="">
-                    <div class="pro-container">
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-                    </div>
-                </section>
-                <!--Akhir Makanan 4-->
-
-                <!--Awal Makanan 5-->
-                <section id="allproduct" class="">
-                    <div class="pro-container">
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-
-                        <div class="pro">
-                            <img src="../assets/produk/nasi babi.jpg" alt="produk olahan babi">
-                            <div class="des">
-                                <span>Nasi Babi Guling</span>
-                                <h5>Enak</h5>
-                                <div class="star">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4>Rp78.000</h4>
-                            </div>
-                            <a href="#"><i class="bi bi-cart cart"></i></a>
-                        </div>
-                    </div>
-                </section>
-                <!--Akhir Makanan 5-->
             </div>
         </div>
-    </div>
 
-    <!--Footer-->
-    <footer class="section-p4 pt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <img class="logo" src="../assets/logo.png" alt="logo">
-                    <p>Website yang ditunjukkan untuk mendukung pengurangan limbah dan menjadikan kegiatan berbagi
-                        seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
-                </div>
+        <!--Footer-->
+        <footer class="section-p4 pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img class="logo" src="../assets/logo.png" alt="logo">
+                        <p>Website yang ditunjukkan untuk mendukung pengurangan limbah dan menjadikan kegiatan berbagi
+                            seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
+                    </div>
 
-                <div class="col">
-                    <h4>Information</h4>
-                    <a href="/aboutus">About Us</a>
-                </div>
+                    <div class="col">
+                        <h4>Information</h4>
+                        <a href="/aboutus">About Us</a>
+                    </div>
 
-                <div class="col">
-                    <h4>Contact Us</h4>
-                    <a href="#"><i class="bi bi-envelope"></i> foodclothesshare@gmail.com</a>
-                    <a href="#"><i class="bi bi-telephone"></i> 08657234589</a>
-                </div>
-                <div class="col">
-                    <div class="follow">
-                        <h4 class="">Media Social</h4>
-                        <div class="icon d-inline-block">
-                            <i class="fab fa-facebook-f"></i>
-                            <i class="fab fa-twitter"></i>
-                            <i class="fab fa-instagram"></i>
+                    <div class="col">
+                        <h4>Contact Us</h4>
+                        <a href="#"><i class="bi bi-envelope"></i> foodclothesshare@gmail.com</a>
+                        <a href="#"><i class="bi bi-telephone"></i> 08657234589</a>
+                    </div>
+                    <div class="col">
+                        <div class="follow">
+                            <h4 class="">Media Social</h4>
+                            <div class="icon d-inline-block">
+                                <i class="fab fa-facebook-f"></i>
+                                <i class="fab fa-twitter"></i>
+                                <i class="fab fa-instagram"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-5">
-                <div class="copyright">
-                    <p>2022, Website WeShare! - Sistem Rekomendasi <i>food sharing</i> dan <i>preloved clothes</i></p>
+                <div class="row mt-5">
+                    <div class="copyright">
+                        <p>2022, Website WeShare! - Sistem Rekomendasi <i>food sharing</i> dan <i>preloved clothes</i>
+                        </p>
+                    </div>
+
                 </div>
+        </footer>
+        <!--Footer Akhir-->
 
-            </div>
-    </footer>
-    <!--Footer Akhir-->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
