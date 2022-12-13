@@ -51,12 +51,6 @@ Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/aboutus', [AboutController::class, 'index']);
 Route::get("/aboutdash", [AboutdashController::class, 'index']);
 
-Route::get("/food", [FoodController::class, 'index']);
-Route::get("/makanan", [MakananController::class, 'index']);
-
-Route::get("/clothes", [ClothesController::class, 'index']);
-Route::get("/pakaian", [PakaianController::class, 'index']);
-
 Route::get('/sharingmakanan', [SharingMakananController::class, 'index']);
 Route::get('/sharingpakaian', [SharingpakaianController::class, 'index']);
 Route::get('/sharingfood', [SharingfoodController::class, 'index']);
