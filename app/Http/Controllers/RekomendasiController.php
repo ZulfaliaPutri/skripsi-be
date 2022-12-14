@@ -31,6 +31,16 @@ class RekomendasiController extends Controller
             }
         }
 
+        $ratings = array();
+        $ratingFound = false;
+        for ($i = 1; $i <= 5; $i++) {
+            if (!empty($request->get("rating-" . $i))) {
+                $ratings[$i] = 1;
+                $ratingFound = true;
+            }
+        }
+
+
 
 
         if (count($categories) > 0) {
@@ -49,15 +59,22 @@ class RekomendasiController extends Controller
 
 
         $products = $products->get();
+        $finalProducts = array();
+
 
         foreach ($products as $product) {
             $rating = Helpers::getRatings($product->rating);
             $product->rating = $rating;
+            if ($ratingFound && array_key_exists($rating, $ratings)) {
+                array_push($finalProducts, $product);
+            } else if (!$ratingFound) {
+                array_push($finalProducts, $product);
+            }
         }
 
         return view('rekomendasi.index', [
             'title' => 'Rekomendasi',
-            "products" => $products
+            "products" => $finalProducts
         ]);
     }
 

@@ -112,29 +112,29 @@
                     <div class="list-group mt-3">
                         <label for="provinsi" class="form-label">Rating</label>
                         <label class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="">
+                            <input name="rating-1" class="form-check-input me-1" type="checkbox">
                             <i class="fas fa-star"></i>
                         </label>
                         <label class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </label>
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="">
-                            <i class="fas fa-star"></i>
+                            <input name="rating-2" class="form-check-input me-1" type="checkbox">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </label>
                         <label class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="">
-                            <i class="fas fa-star"></i>
+                            <input name="rating-3" class="form-check-input me-1" type="checkbox">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </label>
                         <label class="list-group-item">
-                            <input class="form-check-input me-1" type="checkbox" value="">
+                            <input name="rating-4" class="form-check-input me-1" type="checkbox">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </label>
+                        <label class="list-group-item">
+                            <input name="rating-5" class="form-check-input me-1" type="checkbox">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
