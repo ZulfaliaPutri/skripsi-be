@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="style/landingpage.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- Import fontawesome icon -->
     <script src="https://kit.fontawesome.com/e3be59a47f.js" crossorigin="anonymous"></script>
     <!-- Import boostrap icon -->
@@ -30,7 +32,8 @@
                     <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Product
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -58,8 +61,10 @@
     <div class="container">
         <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -75,11 +80,13 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -99,7 +106,8 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="" id="olahan">
                     <div class="menu-kategori">
-                        <a href="makananolahan.html"><img src="../assets/kategori/olahan.png" alt="produk olahan" class="img-categori mt-2" /></a>
+                        <a href="makananolahan.html"><img src="../assets/kategori/olahan.png" alt="produk olahan"
+                                class="img-categori mt-2" /></a>
                         <p class="mt-2">Processed Food</p>
                     </div>
                 </div>
@@ -107,7 +115,8 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="" id="instant">
                     <div class="menu-kategori">
-                        <a href="#"><img src="../assets/kategori/instant.png" alt="produk olahan" class="img-categori mt-2" /></a>
+                        <a href="#"><img src="../assets/kategori/instant.png" alt="produk olahan"
+                                class="img-categori mt-2" /></a>
                         <p class="mt-2">Instant Food</p>
                     </div>
                 </div>
@@ -115,7 +124,8 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="" id="wanita">
                     <div class="menu-kategori">
-                        <a href="#"><img src="../assets/kategori/wanita.png" alt="produk olahan" class="img-categori mt-2" /></a>
+                        <a href="#"><img src="../assets/kategori/wanita.png" alt="produk olahan"
+                                class="img-categori mt-2" /></a>
                         <p class="mt-2">Women Clothes</p>
                     </div>
                 </div>
@@ -123,7 +133,8 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="" id="pria">
                     <div class="menu-kategori">
-                        <a href="#"><img src="../assets/kategori/pria.png" alt="produk olahan" class="img-categori mt-2" /></a>
+                        <a href="#"><img src="../assets/kategori/pria.png" alt="produk olahan"
+                                class="img-categori mt-2" /></a>
                         <p class="mt-2">Man Clothes</p>
                     </div>
                 </div>
@@ -144,19 +155,19 @@
         <div class="pro-container">
             @foreach ($products as $item)
                 <div class="pro">
-                    <img src="{{$item['image_path']}}" alt="produk olahan babi" height="132rem">
+                    <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
                     <div class="des">
-                        <span>{{$item['category']['name']}}</span>
-                        <h5>{{$item['name']}}</h5>
+                        <span>{{ $item['category']['name'] }}</span>
+                        <h5>{{ $item['name'] }}</h5>
                         {{-- todo: change with actual calculation --}}
                         <div class="star">
-                            @for ($i = 0; $i < $item['rating'][0]['rating']; $i++)
+                            @for ($i = 0; $i < $item['rating']; $i++)
                                 <i class="fas fa-star"></i>
                             @endfor
                         </div>
-                        <h4>Rp{{$item['price']}}</h4>
+                        <h4>Rp{{ $item['price'] }}</h4>
                     </div>
-                    <a href="/produk/{{$item['id']}}"><i class="bi bi-cart cart"></i></a>
+                    <a href="/produk/{{ $item['id'] }}"><i class="bi bi-cart cart"></i></a>
                 </div>
             @endforeach
         </div>
@@ -227,7 +238,8 @@
             </div>
     </footer>
     <!--Footer Akhir-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 </body>
 

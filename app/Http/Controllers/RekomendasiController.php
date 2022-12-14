@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Facades\LoggerFacade;
 use Exception;
+use App\Helpers\Helpers;
+use App\Models\Product;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 use PHPJuice\Slopeone\Algorithm;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Jacobemerick\KMeans\KMeans;
@@ -15,6 +16,9 @@ use Phpml\Math\Distance\Euclidean;
 
 class RekomendasiController extends Controller
 {
+
+
+
     public function index(Request $request)
     {
 
@@ -43,22 +47,18 @@ class RekomendasiController extends Controller
             $products = $products->where("price", "<=", $maxPrice);
         }
 
-        // if (!empty($request->get("ratings"))) {
-        //     $ratingsStr = $request->get("ratings");
-        //     $ratings = explode($ratingsStr, ",");
-        // }
 
         $products = $products->get();
+
+        foreach ($products as $product) {
+            $rating = Helpers::getRatings($product->rating);
+            $product->rating = $rating;
+        }
 
         return view('rekomendasi.index', [
             'title' => 'Rekomendasi',
             "products" => $products
         ]);
-    }
-
-    public function search()
-    {
-        LoggerFacade::writeln("ANJENGG");
     }
 
     public function test()
