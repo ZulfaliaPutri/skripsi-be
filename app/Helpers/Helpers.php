@@ -6,7 +6,7 @@ class Helpers
 {
     public static function getRatings($ratings)
     {
-        if ($ratings == null) {
+        if ($ratings == null || count($ratings) == 0) {
             return null;
         }
         $total = 0;
