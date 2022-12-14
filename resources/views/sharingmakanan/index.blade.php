@@ -92,101 +92,104 @@
         <div class="row">
             <div class="col-4">
                 <!--Awal CRUD-->
-                <table>
-                    <tr>
-                        <td>
-                            <form autocomplete="off" onsubmit="onFormSubmit()">
-                                <div>
-                                    <label for="namaMakanan">
-                                        Nama Makanan
-                                    </label>
-                                    <input type="text" name="namaMakanan" id="namaMakanan">
-                                </div>
+                <form method="POST" name="form" action="{{ route('sharing-makanan') }}">
+                    @csrf
+                    @method('POST')
+                    <table>
+                        <tr>
+                            <td>
+                                <form autocomplete="off" onsubmit="onFormSubmit()">
+                                    <div>
+                                        <label for="namaMakanan">
+                                            Nama Makanan
+                                        </label>
+                                        <input type="text" name="name" id="namaMakanan">
+                                    </div>
 
-                                <div class="mb-3" id="kategori">
-                                    <label for="kategori" class="form-label">Kategori</label>
-                                    <select id="disabledSelect" class="form-select">
-                                        <option selected>--Pilih Opsi--</option>
-                                        <option value="1">Makanan Olahan</option>
-                                        <option value="2">Makanan Instant</option>
-                                    </select>
-                                </div>
+                                    <div class="mb-3" id="kategori">
+                                        <label for="kategori" class="form-label">Kategori</label>
+                                        <select name="category_id" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="1">Makanan Olahan</option>
+                                            <option value="2">Makanan Instant</option>
+                                        </select>
+                                    </div>
 
-                                <div class="mb-3" id="masaPenyimpanan">
-                                    <label for="masaPenyimpanan" class="form-label">Masa Penyimpanan</label>
-                                    <select id="disabledSelect" class="form-select">
-                                        <option selected>--Pilih Opsi--</option>
-                                        <option value="1">1 Hari</option>
-                                        <option value="2">2 Hari</option>
-                                        <option value="3">3 Hari</option>
-                                        <option value="4">4 Hari</option>
-                                        <option value="5">5 Hari</option>
-                                        <option value="6">6 Hari</option>
-                                        <option value="7">7 Hari</option>
-                                        <option value="8">8 Hari</option>
-                                        <option value="9">9 Hari</option>
-                                        <option value="10">10 Hari</option>
-                                        <option value="11">11 Hari</option>
-                                        <option value="12">12 Hari</option>
-                                        <option value="13">13 Hari</option>
-                                        <option value="14">14 Hari</option>
-                                        <option value="15">15 Hari</option>
-                                        <option value="16">16 Hari</option>
-                                        <option value="17">17 Hari</option>
-                                        <option value="18">18 Hari</option>
-                                        <option value="19">19 Hari</option>
-                                        <option value="20">20 Hari</option>
-                                        <option value="21">21 Hari</option>
-                                        <option value="22">22 Hari</option>
-                                        <option value="23">23 Hari</option>
-                                        <option value="24">24 Hari</option>
-                                        <option value="25">25 Hari</option>
-                                        <option value="26">26 Hari</option>
-                                        <option value="27">27 Hari</option>
-                                        <option value="28">28 Hari</option>
-                                        <option value="29">29 Hari</option>
-                                        <option value="30">30 Hari</option>
-                                        <option value="31">31 Hari</option>
-                                    </select>
-                                </div>
+                                    <div class="mb-3" id="masaPenyimpanan">
+                                        <label for="masaPenyimpanan" class="form-label">Masa Penyimpanan</label>
+                                        <select name="expired_day_count" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="1">1 Hari</option>
+                                            <option value="2">2 Hari</option>
+                                            <option value="3">3 Hari</option>
+                                            <option value="4">4 Hari</option>
+                                            <option value="5">5 Hari</option>
+                                            <option value="6">6 Hari</option>
+                                            <option value="7">7 Hari</option>
+                                            <option value="8">8 Hari</option>
+                                            <option value="9">9 Hari</option>
+                                            <option value="10">10 Hari</option>
+                                            <option value="11">11 Hari</option>
+                                            <option value="12">12 Hari</option>
+                                            <option value="13">13 Hari</option>
+                                            <option value="14">14 Hari</option>
+                                            <option value="15">15 Hari</option>
+                                            <option value="16">16 Hari</option>
+                                            <option value="17">17 Hari</option>
+                                            <option value="18">18 Hari</option>
+                                            <option value="19">19 Hari</option>
+                                            <option value="20">20 Hari</option>
+                                            <option value="21">21 Hari</option>
+                                            <option value="22">22 Hari</option>
+                                            <option value="23">23 Hari</option>
+                                            <option value="24">24 Hari</option>
+                                            <option value="25">25 Hari</option>
+                                            <option value="26">26 Hari</option>
+                                            <option value="27">27 Hari</option>
+                                            <option value="28">28 Hari</option>
+                                            <option value="29">29 Hari</option>
+                                            <option value="30">30 Hari</option>
+                                            <option value="31">31 Hari</option>
+                                        </select>
+                                    </div>
 
-                                <div>
-                                    <label for="qty">
-                                        Jumlah Barang
-                                    </label>
-                                    <input type="number" name="qty" id="qty">
-                                </div>
+                                    <div>
+                                        <label for="qty">
+                                            Jumlah Barang
+                                        </label>
+                                        <input type="number" name="quantity" id="qty">
+                                    </div>
 
-                                <div>
-                                    <label for="perPrice">
-                                        Harga
-                                    </label>
-                                    <input type="number" name="perPrice" id="perPrice">
-                                </div>
+                                    <div>
+                                        <label for="perPrice">
+                                            Harga
+                                        </label>
+                                        <input type="number" name="price" id="perPrice">
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="fotoProduk" class="form-label">Foto Produk</label>
-                                    <input class="form-control" type="file" id="fotoProduk" multiple>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="fotoProduk" class="form-label">Foto Produk</label>
+                                        <input class="form-control" type="file" id="fotoProduk" multiple>
+                                    </div>
 
-                                <div>
-                                    <label for="description">
-                                        Deskripsi
-                                    </label>
-                                    <input type="text" name="Deksripsi" id="decription">
-                                </div>
+                                    <div>
+                                        <label for="description">
+                                            Deskripsi
+                                        </label>
+                                        <input type="text" name="description" id="decription">
+                                    </div>
 
-                                <div class="form_action--button">
-                                    <input type="submit" value="Submit">
-                                    <input type="reset" value="Reset">
-                                </div>
-                            </form>
+                                    <div class="form_action--button">
+                                        <input type="submit" value="Submit">
+                                        <input type="reset" value="Reset">
+                                    </div>
+                                </form>
 
-                        </td>
+                            </td>
 
-                    </tr>
-                </table>
-                <!--Akhir CRUD-->
+                        </tr>
+                    </table>
+                </form>
             </div>
             <div class="col-8">
                 <table class="list" id="storeList">
@@ -199,6 +202,18 @@
                             <th>Harga</th>
                             <th>Foto Produk</th>
                         </tr>
+                        @if (isset($ownedProducts))
+                            @foreach ($ownedProducts as $product)
+                                <tr>
+                                    <th>{{ $product->name }}</th>
+                                    <th>{{ $product->category->name }}</th>
+                                    <th>{{ $product->food->expired_day_count }} Hari</th>
+                                    <th>{{ $product->quantity }}</th>
+                                    <th>{{ $product->price }}</th>
+                                    <th>nantian</th>
+                                </tr>
+                            @endforeach
+                        @endif
                     </thead>
                     <tbody>
 
