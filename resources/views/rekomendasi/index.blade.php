@@ -183,7 +183,7 @@
                                     <h5>{{ $item['name'] }}</h5>
                                     {{-- todo: change with actual calculation --}}
                                     <div class="star">
-                                        @for ($i = 0; $i < $item['rating'][0]['rating']; $i++)
+                                        @for ($i = 0; $i < $item['rating']; $i++)
                                             <i class="fas fa-star"></i>
                                         @endfor
                                     </div>
