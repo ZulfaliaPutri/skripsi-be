@@ -53,7 +53,8 @@ Route::get("/aboutdash", [AboutdashController::class, 'index']);
 
 Route::get('/sharingmakanan', [SharingMakananController::class, 'index'])->name("sharing-makanan");
 Route::post('/sharingmakanan', [SharingMakananController::class, 'store'])->name("sharing-makanan");
-Route::get('/sharingpakaian', [SharingpakaianController::class, 'index']);
+Route::get('/sharingpakaian', [SharingpakaianController::class, 'index'])->name("sharing-pakaian");
+Route::post('/sharingpakaian', [SharingpakaianController::class, 'store'])->name("sharing-pakaian");
 Route::get('/sharingfood', [SharingfoodController::class, 'index']);
 
 Route::get('/produk/{id}', [ProdukController::class, 'index']);
