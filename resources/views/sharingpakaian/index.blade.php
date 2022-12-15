@@ -92,98 +92,101 @@
         <div class="row">
             <div class="col-4">
                 <!--Awal CRUD-->
-                <table>
-                    <tr>
-                        <td>
-                            <form autocomplete="off" onsubmit="onFormSubmit()">
-                                <div>
-                                    <label for="namaPakaian">
-                                        Nama Pakaian
-                                    </label>
-                                    <input type="text" name="namaPakaian" id="namaPakaian">
-                                </div>
+                <form method="POST" name="form" action="{{ route('sharing-pakaian') }}">
+                    @csrf
+                    @method('POST')
+                    <table>
+                        <tr>
+                            <td>
+                                <form autocomplete="off" onsubmit="onFormSubmit()">
+                                    <div>
+                                        <label for="namaPakaian">
+                                            Nama Pakaian
+                                        </label>
+                                        <input type="text" name="name" id="namaPakaian">
+                                    </div>
 
-                                <div class="mb-3" id="kategori">
-                                    <label for="kategori" class="form-label">Kategori</label>
-                                    <select id="disabledSelect" class="form-select">
-                                        <option selected>--Pilih Opsi--</option>
-                                        <option value="1">Pria</option>
-                                        <option value="2">Perempuan</option>
-                                    </select>
-                                </div>
+                                    <div class="mb-3" id="kategori">
+                                        <label for="kategori" class="form-label">Kategori</label>
+                                        <select name="category_id" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="3">Perempuan</option>
+                                            <option value="4">Pria</option>
+                                        </select>
+                                    </div>
 
-                                <div class="mb-3" id="panjangLengan">
-                                    <label for="panjangLengan" class="form-label">Panjang Lengan</label>
-                                    <select id="disabledSelect" class="form-select">
-                                        <option selected>--Pilih Opsi--</option>
-                                        <option value="1">Panjang</option>
-                                        <option value="2">Pendek</option>
-                                    </select>
-                                </div>
+                                    <div class="mb-3" id="panjangLengan">
+                                        <label for="panjangLengan" class="form-label">Panjang Lengan</label>
+                                        <select name="sleeve_type" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="Panjang">Panjang</option>
+                                            <option value="Pendek">Pendek</option>
+                                        </select>
+                                    </div>
 
-                                <div class="mb-3" id="ukuranPakaian">
-                                    <label for="kategori" class="form-label">Ukuran</label>
-                                    <select id="disabledSelect" class="form-select">
-                                        <option selected>--Pilih Opsi--</option>
-                                        <option value="1">S</option>
-                                        <option value="2">M</option>
-                                        <option value="3">L</option>
-                                        <option value="4">XL</option>
-                                        <option value="5">XXL</option>
-                                    </select>
-                                </div>
+                                    <div class="mb-3" id="ukuranPakaian">
+                                        <label for="kategori" class="form-label">Ukuran</label>
+                                        <select name="size" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                        </select>
+                                    </div>
 
-                                <div class="mb-3" id="bahanPakaian">
-                                    <label for="bahanPakaian" class="form-label">Bahan</label>
-                                    <select id="disabledSelect" class="form-select">
-                                        <option selected>--Pilih Opsi--</option>
-                                        <option value="1">Freelace</option>
-                                        <option value="2">Katun</option>
-                                        <option value="3">Polyester</option>
-                                        <option value="4">Knitt</option>
-                                        <option value="5">Sifon</option>
-                                        <option value="6">Rajut</option>
-                                        <option value="7">Canvas</option>
-                                        <option value="8">Flanel</option>
-                                    </select>
-                                </div>
+                                    <div class="mb-3" id="bahanPakaian">
+                                        <label for="bahanPakaian" class="form-label">Bahan</label>
+                                        <select name="material" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="Freelance">Freelace</option>
+                                            <option value="Katun">Katun</option>
+                                            <option value="Polyester">Polyester</option>
+                                            <option value="Knitt">Knitt</option>
+                                            <option value="Sifon">Sifon</option>
+                                            <option value="Rajut">Rajut</option>
+                                            <option value="Canvas">Canvas</option>
+                                            <option value="Flanel">Flanel</option>
+                                        </select>
+                                    </div>
 
-                                <div>
-                                    <label for="qty">
-                                        Jumlah Barang
-                                    </label>
-                                    <input type="number" name="qty" id="qty">
-                                </div>
+                                    <div>
+                                        <label for="qty">
+                                            Jumlah Barang
+                                        </label>
+                                        <input type="number" name="quantity" id="qty">
+                                    </div>
 
-                                <div>
-                                    <label for="perPrice">
-                                        Harga
-                                    </label>
-                                    <input type="number" name="perPrice" id="perPrice">
-                                </div>
+                                    <div>
+                                        <label for="perPrice">
+                                            Harga
+                                        </label>
+                                        <input type="number" name="price" id="perPrice">
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="fotoProduk" class="form-label">Foto Produk</label>
-                                    <input class="form-control" type="file" id="fotoProduk" multiple>
-                                </div>
+                                    <div class="mb-3">
+                                        <label for="fotoProduk" class="form-label">Foto Produk</label>
+                                        <input class="form-control" type="file" id="fotoProduk" multiple>
+                                    </div>
 
-                                <div>
-                                    <label for="description">
-                                        Deskripsi
-                                    </label>
-                                    <input type="text" name="Deksripsi" id="decription">
-                                </div>
+                                    <div>
+                                        <label for="description">
+                                            Deskripsi
+                                        </label>
+                                        <input type="text" name="description" id="decription">
+                                    </div>
 
-                                <div class="form_action--button">
-                                    <input type="submit" value="Submit">
-                                    <input type="reset" value="Reset">
-                                </div>
-                            </form>
+                                    <div class="form_action--button">
+                                        <input type="submit" value="Submit">
+                                        <input type="reset" value="Reset">
+                                    </div>
+                                </form>
 
-                        </td>
-
-                    </tr>
-                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
             <div class="col-8">
                 <table class="list" id="storeList">
@@ -197,6 +200,19 @@
                             <th>Foto Produk</th>
                             <th>Deskripsi</th>
                         </tr>
+                        @if (isset($ownedProducts))
+                            @foreach ($ownedProducts as $product)
+                                <tr>
+                                    <th>{{ $product->name }}</th>
+                                    <th>{{ $product->category->name }}</th>
+                                    <th>{{ $product->clothes->sleeve_type }}</th>
+                                    <th>{{ $product->clothes->size }}</th>
+                                    <th>{{ $product->clothes->material }}</th>
+                                    <th>nantian</th>
+                                    <th>{{ $product->description }}</th>
+                                </tr>
+                            @endforeach
+                        @endif
                     </thead>
                     <tbody>
 
@@ -205,9 +221,6 @@
             </div>
         </div>
     </div>
-
-
-
     <!--Akhir CRUD-->
 
     <!--Footer-->

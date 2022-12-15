@@ -20,7 +20,7 @@ class SharingmakananController extends Controller
             ]);
         }
 
-        $ownedProducts = Product::where("seller_id", $seller->id)->has("food")->with(["Food"])->get();
+        $ownedProducts = Product::where("seller_id", $seller->id)->has("Food")->with(["Food"])->get();
 
         return view('sharingmakanan.index', [
             'title' => 'Sharingmakanan',
