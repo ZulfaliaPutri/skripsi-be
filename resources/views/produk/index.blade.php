@@ -31,6 +31,18 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
                 </li>
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sharing
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/sharingmakanan">Food</a></li>
+                            <li><a class="dropdown-item" href="/sharingpakaian">Clothes</a></li>
+                        </ul>
+                    </li>
+                @endauth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,12 +58,36 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register">Sign Up</a>
-                </li>
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Sign Up</a>
+                    </li>
+                @endguest
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Welcome back, {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> My Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <form action="/logout" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
+                                        Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endauth
             </ul>
         </div>
     </nav>
@@ -139,8 +175,17 @@
                         <p class="spesifikasi">
                             {{-- //todo: later --}}
                         <h6>Spesifikasi Produk:</h6>
-                        Expired: 22 Juni 2022 </br>
-                        Kategori: Makanan Olahan </br> </p>
+                        <p>Jenis: {{ $product->category->name }}</p>
+                        @if ($type == 1)
+                            {{-- food product --}}
+                            <p>Expired: {{ $product->food->expired_day_count }} hari</p>
+                        @elseif ($type == 2)
+                            {{-- clothes product --}}
+                            <p>Bahan: {{ $product->clothes->material }}</p>
+                            <p>Ukuran: {{ $product->clothes->size }}</p>
+                            <p>Ukuran Lengan: {{ $product->clothes->sleeve_type }}</p>
+                        @endif
+
                         <p class="deskripsi">
                         <h6>Deskripsi Produk:</h6>
                         {{ $product->description }}
