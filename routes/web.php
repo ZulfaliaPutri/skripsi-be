@@ -58,6 +58,7 @@ Route::post('/sharingpakaian', [SharingpakaianController::class, 'store'])->name
 Route::get('/sharingfood', [SharingfoodController::class, 'index']);
 
 Route::get('/produk/{id}', [ProdukController::class, 'index']);
+Route::post('/produk/{id}', [ProdukController::class, 'store'])->name("rate-product");
 Route::get('produkdash', [ProdukdashController::class, 'index']);
 
 Route::get('/test', [RekomendasiController::class, 'test']);
