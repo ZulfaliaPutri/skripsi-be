@@ -152,6 +152,48 @@
               Keranjang</a
             > -->
                     <a href="#" class="btn btn-success text-white btn-lg btn-custom">Beli Sekarang</a>
+                    @auth
+                        <a class="btn btn-success text-white btn-lg btn-custom" data-toggle="modal" id="smallButton"
+                            data-target="#smallModal" title="show">
+                            Beri Ulasan
+                        </a>
+                    @endauth
+
+                    <div class="modal fade" id="smallModal" tabindex="-1" role="dialog"
+                        aria-labelledby="smallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="smallBody">
+                                    <div>
+                                        <p>Pilih Rating:</p>
+                                        <form method="POST" name="form"
+                                            action="{{ route('rate-product', ['id' => $params_id]) }}">
+                                            @csrf
+                                            @method('POST')
+
+                                            <div class="star">
+                                                <button name="submit" value="1" type="submit"
+                                                    class="fas fa-star"></button>
+                                                <button name="submit" value="2" type="submit"
+                                                    class="fas fa-star"></button>
+                                                <button name="submit" value="3" type="submit"
+                                                    class="fas fa-star"></button>
+                                                <button name="submit" value="4" type="submit"
+                                                    class="fas fa-star"></button>
+                                                <button name="submit" value="5" type="submit"
+                                                    class="fas fa-star"></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -262,6 +304,43 @@
     <!--Footer Akhir-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // display a modal (small modal)
+        $(document).on('click', '#smallButton', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#smallModal').modal("show");
+                    $('#smallBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
     </script>
 </body>
 
