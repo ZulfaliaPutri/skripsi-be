@@ -7,9 +7,9 @@ use Exception;
 use App\Helpers\Helpers;
 use App\Models\Product;
 use App\Models\Rating;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PHPJuice\Slopeone\Algorithm;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Jacobemerick\KMeans\KMeans;
 use Phpml\Math\Distance\Euclidean;
@@ -85,10 +85,10 @@ class RekomendasiController extends Controller
          * 1. cari rata-rata selisih rating
          * 2. nilai prediksi -> mencari nilai sel matriks yang kosong
          */
-        $ratingDataset = $this->getRatingDataset();
+        // $ratingDataset = $this->getRatingDataset();
         // $slopeOnePrediction = $this->predictRating($ratingDataset, 3);
         $slopeOneResult = $this->produceSlopeOneResult();
-        dd($slopeOneResult);
+        // dd($slopeOneResult);
 
         /**
          * METODE ICHM
@@ -109,34 +109,42 @@ class RekomendasiController extends Controller
          *      e. probabilitas item cluster
          */
         $normResult = $this->getNormalizationContentItem($contentItemDataset);
-        $groupRating = $this->getKmeans($normResult, 4); /* Number cluster : 4 (Can be changed later!) */
+        $groupRating = $this->getKmeans($normResult, 3); /* Number cluster : 3 (Can be changed later!) */
         // dd($normResult);
         // dd($kmeansClustering);
+        // dd($groupRating);
 
 
         /**
          * 3. Similarity Item-rating 
          * -> ini masukan dari rating produk yang sudah di lakukan di algoritma slope one (Pearson correlation based similarity)
          */
-        // TODO: Checkpoint!!!
-        $simItemRating = $this->getItemRatingSimilarity($slopeOneResult);
+        $itemRating = $this->removeLabel($slopeOneResult);
+        // dd($groupRating, $itemRating);
+        $pearsonSimilarity = $this->pearsonSim($itemRating);
+        // dd($pearsonSimilarity);
 
         /**
          * 4. Similarity Group Rating 
          * -> adjusted cosine similarity menggunakan masuan group rating
          */
+        $adjCosineSimilarity = $this->adjCosineSim($groupRating);
+        // dd($adjCosineSimilarity);
 
 
         /**
          * 5. Kombinasi Linear Similarity 
          * -> masukan dari proses 3 dan proses 4
          */
-
+        $linearCombination = $this->linearComb($pearsonSimilarity, $adjCosineSimilarity, 0.5);
+        // dd($linearCombination);
 
         /**
          * 6. Prediksi Rating 
          * -> menggunakan weighted average of deviation yang masukkannya dari item raing dan kombinasi linear similarity
          */
+        $weightedAverageDeviation = $this->weightAvgDev($itemRating, $linearCombination);
+        dd("Hasil", $weightedAverageDeviation);
     }
 
     private function getRatingDataset(): array
@@ -169,7 +177,6 @@ class RekomendasiController extends Controller
         $slopeone->update($ratingDataset);
 
         // Cari rating terakhir yang dimiliki authenticated user (current user)
-        // $user = Auth::user(); /* TODO: Unhide this code (temporary) */
         $user = User::find($userId);
         $latestRatingIndex = count($user->ratings) - 1;
 
@@ -188,7 +195,7 @@ class RekomendasiController extends Controller
             // Convert result into absolute value
             return $this->absoluteValue($result[$productId]);
         } else {
-            throw new Exception("User belum memilki rating!");
+            throw new Exception("User doesn't have any rating yet!");
         }
 
         return $result;
@@ -309,58 +316,241 @@ class RekomendasiController extends Controller
         return $max;
     }
 
-    private function getKmeans($data, $clusterNum): array
+    private function getKmeans($data, $cluster): array
     {
-        // Init kmeans
-        $kmeans = new KMeans($clusterNum);
-
-        // Format data
-        $formatted = [];
+        // Prepare data
+        $content = [];
         foreach ($data as $item) {
-            // Index 0 => view_count, index 1 => price
-            $formatted['product_' . $item['product_id']][0] = $item['view_count'];
-            $formatted['product_' . $item['product_id']][1] = $item['price'];
+            array_push($content, [$item['view_count'], $item['price']]);
+        }
+        // dd($data, $content);
+
+        // // Init kmeans
+        $kmeans = new Kmeans($content);
+        $kmeans->cluster($cluster);
+        // $kmeans = new KMeans($cluster);
+
+        // Group rating process
+        $result = [];
+        foreach ($kmeans->getCentroids() as $numCluster) {
+            $maxCS = 0;
+            $CS = [];
+            $rowCluster = [];
+
+            // CS(j,k) and MaxCS(j,k)
+            foreach ($content as $rowItem) {
+                // Eucledian distance
+                // $De = $this->distance($rowItem, $clusterNum);
+                $euc = new Euclidean();
+                $De = $euc->distance($rowItem, $numCluster);
+                $CS[] = $De;
+                if ($maxCS < $De) $maxCS = $De;
+            }
+
+            // Pro(j,k)
+            foreach ($CS as $valCS) {
+                $rowCluster[] = 1 - ($valCS / $maxCS);
+            }
+
+            // assign
+            $result[] = $rowCluster;
         }
 
-        // Run kmeans clustering
-        return $kmeans->cluster($formatted);
+        // // Format data
+        // $formatted = [];
+        // foreach ($data as $item) {
+        //     // Index 0 => view_count, index 1 => price
+        //     $formatted['product_' . $item['product_id']][0] = $item['view_count'];
+        //     $formatted['product_' . $item['product_id']][1] = $item['price'];
+        // }
+
+        // // Run kmeans clustering
+        // return $kmeans->cluster($formatted);
+        return $result;
     }
 
-    private function getItemRatingSimilarity($data): array
+    private function pearsonSim($rating)
+    {
+        // Transpose data
+        $data = $this->transpose($rating); /* product => user ratings */
+        // dd($rating, $data);
+
+        // Get list of user
+        $listUser = [];
+        foreach ($rating as $user => $product) {
+            array_push($listUser, $user);
+        }
+        // dd($listUser);
+
+        // Get list of product
+        $listProduct = [];
+        foreach ($data as $product => $r) {
+            array_push($listProduct, $product);
+        }
+        // dd($listProduct);
+
+        // Get mean for each product rating
+        $productMeans = [];
+        foreach ($data as $productId => $ratings) {
+            $total = 0;
+            foreach ($ratings as $r) {
+                $total += $r;
+            }
+            $productMeans[$productId] = $total / count($ratings);
+        }
+        // dd($productMeans);
+
+        // Calculate similarity
+        $similarityResult = [];
+        foreach ($listProduct as $i) {
+            foreach ($listProduct as $j) {
+                $numerator = 0;
+                $denominatorA = 0;
+                $denominatorB = 0;
+                foreach ($listUser as $u) {
+                    $numerator += ($rating[$u][$i] - $productMeans[$i]) * ($rating[$u][$j] - $productMeans[$j]);
+                    $denominatorA += pow(($rating[$u][$i] - $productMeans[$i]), 2);
+                    $denominatorB += pow(($rating[$u][$j] - $productMeans[$j]), 2);
+                }
+                $similarityResult[$i][$j] = $numerator / (sqrt($denominatorA) * sqrt($denominatorB));
+            }
+        }
+
+        // dd($similarityResult);
+        return $similarityResult;
+    }
+
+    private function adjCosineSim($rating)
+    {
+        // Transpose data
+        $data = $this->transpose($rating); /* product => user ratings */
+        // dd($rating, $data);
+
+        // Get list of user
+        $listUser = [];
+        foreach ($rating as $user => $product) {
+            array_push($listUser, $user);
+        }
+        // dd($listUser);
+
+        // Get list of product
+        $listProduct = [];
+        foreach ($data as $product => $r) {
+            array_push($listProduct, $product);
+        }
+        // dd($listProduct);
+
+        // // Get mean for each user rating
+        $userMeans = [];
+        foreach ($rating as $user => $ratings) {
+            $total = 0;
+            foreach ($ratings as $r) {
+                $total += $r;
+            }
+            $userMeans[$user] = $total / count($ratings);
+        }
+        // // dd($userMeans);
+
+        // Calculate similarity
+        $similarityResult = [];
+        foreach ($listProduct as $i) {
+            foreach ($listProduct as $j) {
+                $numerator = 0;
+                $denominatorA = 0;
+                $denominatorB = 0;
+                foreach ($listUser as $u) {
+                    $numerator += ($rating[$u][$i] - $userMeans[$u]) * ($rating[$u][$j] - $userMeans[$u]);
+                    $denominatorA += pow(($rating[$u][$i] - $userMeans[$u]), 2);
+                    $denominatorB += pow(($rating[$u][$j] - $userMeans[$u]), 2);
+                }
+                $similarityResult[$i][$j] = $numerator / (sqrt($denominatorA) * sqrt($denominatorB));
+            }
+        }
+
+        // dd($similarityResult);
+        return $similarityResult;
+    }
+
+    private function linearComb($pearsonSim, $adjCosineSim, $coeficient): array
     {
         $result = [];
 
-        // TODO: Get similarity here!
-        dd($data);
+        foreach ($pearsonSim as $rowIndex => $row) {
+            $rowSimilarity = [];
+            foreach ($row as $colIndex => $col) {
+                $lc = ($col * (1 - $coeficient)) + ($adjCosineSim[$rowIndex][$colIndex] * $coeficient);
+                $rowSimilarity[$colIndex] = $lc;
+            }
+
+            $result[$rowIndex] = $rowSimilarity;
+        }
 
         return $result;
     }
+
+    private function weightAvgDev($ratingItem, $linearSim): array
+    {
+        $result = [];
+
+        // Loop trough users
+        foreach ($ratingItem as $u => $ratings) {
+            foreach ($ratings as $p => $pVal) {
+                foreach ($ratings as $i => $iVal) {
+                    $result[$u][$p] = ($iVal * $linearSim[$p][$i]) / abs($linearSim[$p][$i]);
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Helper functions
+     */
+    private function removeLabel($data): array
+    {
+        $result = [];
+
+        foreach ($data as $user => $products) {
+            $userId = (int) str_replace('user_', '', $user);
+            foreach ($products as $id => $rating) {
+                $productId = (int) str_replace('product_', '', $id);
+                $result[$userId][$productId] = $rating;
+            }
+        }
+
+        return $result;
+    }
+
+    private function transpose($data)
+    {
+        $retData = array();
+        foreach ($data as $row => $columns) {
+            foreach ($columns as $row2 => $column2) {
+                $retData[$row2][$row] = $column2;
+            }
+        }
+        return $retData;
+    }
+
+    private function distance($vector1, $vector2)
+    {
+        $n = count($vector1);
+        $sum = 0;
+        for ($i = 0; $i < $n; $i++) {
+            $sum += ($vector1[$i] - $vector2[$i]) * ($vector1[$i] - $vector2[$i]);
+        }
+        return sqrt($sum);
+    }
+
+    private function mean($arr)
+    {
+        $count = count($arr); //total numbers in array
+        $total = 0;
+        foreach ($arr as $value) {
+            $total = $total + $value; // total value of array numbers
+        }
+        $average = ($total / $count); // get average value
+        return $average;
+    }
 }
-
-    //ALGORITMA SLOPE ONE -> ini digunakan untuk memprediksi nilai rating item yang tidak meilii rating atau 0
-
-    //1. cari rata-rata selisih rating
-    //2. nilai prediksi -> mencari nilai sel matriks yang kosong
-
-    // METODE ICHM
-
-    //1. Punya dataset Rating Item dan konten item (harga dan jumlah view)
-
-    //2.Group Rating 
-        //A.normalisasi nilai konten produk item 
-            //a. mengubah nilai yang blm seimbang ke rentang nilai yang sama
-            //b. menggunakan metode min-max dengan nilai bawah 1 dan nilai atas 10
-        //B. K mean clustering
-            //a. penglompokkan berdasarkan kedekatan antar item gunain K-MEANS CLUSTERING
-            //b.Kemudian terdapat eucladean distance -> ini menemukan cluster
-            //c. iterasi pertama mendapatkan nilai centroid baru. ini digunakan terus menerus sampe tidak ada berubah
-            //d.metode elbow dengan SSE
-            //e. probabilitas item cluster
-
-    //3. Similarity Item-rating -> ini masukan dari rating produk yang sudah di lakukan di algoritma slope one (Pearson correlation based similarity)
-
-    //4. Similarity Group Rating -> adjusted cosine similarity menggunakan masuan group rating
-
-    //5. Kombinasi Linear Similarity -> masukan dari proses 3 dan proses 4
-
-    //6. Prediksi Rating -> menggunakan weighted average of deviation yang masukkannya dari item raing dan kombinasi linear similarity
