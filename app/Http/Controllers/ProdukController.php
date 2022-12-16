@@ -11,12 +11,14 @@ class ProdukController extends Controller
 {
     public function index(Request $request, $id)
     {
-        $selectedProduct = Product::where("id", $id)->with(['Category', 'Rating', 'Seller'])->first();
+        $selectedProduct = Product::where("id", $id)->with(['Category', 'Rating', 'Seller', 'Food', 'Clothes'])->first();
         if ($selectedProduct === null) {
             return view('produk.notfound', []);
         }
         $selectedProduct->view_count = $selectedProduct->view_count + 1;
         $selectedProduct->save();
+
+        LoggerFacade::writeln($selectedProduct);
 
         $selectedProduct->rating = Helpers::getRatings($selectedProduct->rating);
 
@@ -26,9 +28,16 @@ class ProdukController extends Controller
             $product->rating = $rating;
         }
 
+        if ($selectedProduct->clothes) {
+            $type = 2;
+        } else if ($selectedProduct->food) {
+            $type = 1;
+        }
+
         return view('produk.index', [
             'title' => 'Produk',
             'product' => $selectedProduct,
+            'type' => $type,
             'productRecommendations' => $productRecommendations,
         ]);
     }
