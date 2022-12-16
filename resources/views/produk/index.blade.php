@@ -96,12 +96,10 @@
                 <div class="star">
                     {{-- todo: later --}}
                     <a href="#" class="d-inline text-decoration-none">
-                        Rating
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></a>
+                        @for ($i = 0; $i < $product->rating; $i++)
+                            <i class="fas fa-star"></i>
+                        @endfor
+                    </a>
                 </div>
                 <h3 class="text-muted mb-3">Rp {{ $product->price }}</h3>
                 <button type="button" class="btn btn-dark btn-sm">
