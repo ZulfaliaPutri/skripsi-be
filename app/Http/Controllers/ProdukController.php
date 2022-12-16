@@ -11,10 +11,11 @@ class ProdukController extends Controller
 {
     public function index(Request $request, $id)
     {
-        $product = Product::where("id", $id)->with(['Category', 'Rating', 'Seller'])->first();
-        if ($product === null) {
+        $selectedProduct = Product::where("id", $id)->with(['Category', 'Rating', 'Seller'])->first();
+        if ($selectedProduct === null) {
             return view('produk.notfound', []);
         }
+        $selectedProduct->rating = Helpers::getRatings($selectedProduct->rating);
 
         $productRecommendations = Product::inRandomOrder()->take(12)->with(['Category', 'Rating'])->get();
         foreach ($productRecommendations as $product) {
@@ -24,7 +25,7 @@ class ProdukController extends Controller
 
         return view('produk.index', [
             'title' => 'Produk',
-            'product' => $product,
+            'product' => $selectedProduct,
             'productRecommendations' => $productRecommendations,
         ]);
     }
