@@ -15,6 +15,9 @@ class ProdukController extends Controller
         if ($selectedProduct === null) {
             return view('produk.notfound', []);
         }
+        $selectedProduct->view_count = $selectedProduct->view_count + 1;
+        $selectedProduct->save();
+
         $selectedProduct->rating = Helpers::getRatings($selectedProduct->rating);
 
         $productRecommendations = Product::inRandomOrder()->take(12)->with(['Category', 'Rating'])->get();
