@@ -149,7 +149,7 @@
         <h3>Recommendation Product</h3>
         <div class="row">
             <div class="d-flex align-items-center justify-content-end">
-                <a class="see-more" href="/rekomendasilanding">See All</a>
+                <a class="see-more" href="/rekomendasi">See All</a>
             </div>
         </div>
         <div class="pro-container">
