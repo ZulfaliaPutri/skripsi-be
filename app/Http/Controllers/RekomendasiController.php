@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Log\Logger;
 use PHPJuice\Slopeone\Algorithm;
 use Illuminate\Support\Facades\Auth;
 use Jacobemerick\KMeans\KMeans;
@@ -64,8 +65,23 @@ class RekomendasiController extends Controller
         if ($noFilter) {
             $ratedItems = Rating::where("user_id", Auth::user()->id)->get();
             if ($ratedItems->isEmpty()) {
-                // todo: fallback
-                return;
+                $products = $products->get();
+                $finalProducts = array();
+
+                foreach ($products as $product) {
+                    $rating = Helpers::getRatings($product->rating);
+                    $product->rating = $rating;
+                    if ($ratingFound && array_key_exists($rating, $ratings)) {
+                        array_push($finalProducts, $product);
+                    } else if (!$ratingFound) {
+                        array_push($finalProducts, $product);
+                    }
+                }
+
+                return view('rekomendasi.index', [
+                    'title' => 'Rekomendasi',
+                    "products" => $finalProducts
+                ]);
             }
             $ratedItemsIds = array();
             foreach ($ratedItems as $ratedItem) {
@@ -124,8 +140,37 @@ class RekomendasiController extends Controller
                 } else {
                     $final = 0;
                 }
-                LoggerFacade::writeln($final);
+                $theProduct = Product::with(["Category", "Rating"])->where("id", $toRecommend->product_id)->first();
+                $toShowProducts[$final] = $theProduct;
             }
+            krsort($toShowProducts);
+
+            $productIds = array();
+            foreach ($toShowProducts as $key => $val) {
+                array_push($productIds, $key);
+            }
+
+            $finalToShowProducts = array();
+            foreach ($toShowProducts as $key => $product) {
+                $rating = Helpers::getRatings($product['rating']);
+                $product->rating = $rating;
+                array_push($finalToShowProducts, $product);
+            }
+
+            $otherProducts = Product::with(["Category", "Rating"])->whereNotIn("id", $productIds)->get();
+            $finalNormalProducts = array();
+
+            foreach ($otherProducts as $product) {
+                $rating = Helpers::getRatings($product->rating);
+                $product->rating = $rating;
+                array_push($finalNormalProducts, $product);
+            }
+
+            return view('rekomendasi.index', [
+                'title' => 'Rekomendasi',
+                "productsRecommended" => $finalToShowProducts,
+                "products" => $otherProducts
+            ]);
         }
 
         $products = $products->get();

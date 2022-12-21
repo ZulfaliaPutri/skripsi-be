@@ -195,6 +195,28 @@
                 <section id="allproduct" class="">
                     <h3>Recommendation Product</h3>
                     <div class="pro-container">
+                        @auth
+                            @if (isset($productsRecommended))
+                                @foreach ($productsRecommended as $item)
+                                    <div class="pro">
+                                        <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
+                                        <div class="des">
+                                            <span>{{ $item['category']['name'] }}</span>
+                                            <h5>{{ $item['name'] }}</h5>
+                                            {{-- todo: change with actual calculation --}}
+                                            <div class="star">
+                                                @for ($i = 0; $i < $item['rating']; $i++)
+                                                    <i class="fas fa-star"></i>
+                                                @endfor
+                                            </div>
+                                            <h4>Rp{{ $item['price'] }}</h4>
+                                            <p>rekomendasi</p>
+                                        </div>
+                                        <a href="/produk/{{ $item['id'] }}"><i class="bi bi-cart cart"></i></a>
+                                    </div>
+                                @endforeach
+                            @endif
+                        @endauth
                         @foreach ($products as $item)
                             <div class="pro">
                                 <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
