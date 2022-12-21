@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\LoggerFacade;
 use Exception;
 use App\Helpers\Helpers;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Rating;
 use App\Models\User;
@@ -23,11 +24,13 @@ class RekomendasiController extends Controller
     {
 
         $products = Product::inRandomOrder()->with(['Category', 'Rating']);
+        $noFilter = true;
 
         $categories = array();
         for ($i = 1; $i <= 4; $i++) {
             if (!empty($request->get("category-" . $i))) {
                 array_push($categories, $i);
+                $noFilter = false;
             }
         }
 
@@ -37,21 +40,92 @@ class RekomendasiController extends Controller
             if (!empty($request->get("rating-" . $i))) {
                 $ratings[$i] = 1;
                 $ratingFound = true;
+                $noFilter = false;
             }
         }
 
         if (count($categories) > 0) {
             $products = $products->whereIn("category_id", $categories);
+            $noFilter = false;
         }
 
         if (!empty($request->get("minPrice"))) {
             $minPrice = $request->get("minPrice");
             $products = $products->where("price", ">=", $minPrice);
+            $noFilter = false;
         }
 
         if (!empty($request->get("maxPrice"))) {
             $maxPrice = $request->get("maxPrice");
             $products = $products->where("price", "<=", $maxPrice);
+            $noFilter = false;
+        }
+
+        if ($noFilter) {
+            $ratedItems = Rating::where("user_id", Auth::user()->id)->get();
+            if ($ratedItems->isEmpty()) {
+                // todo: fallback
+                return;
+            }
+            $ratedItemsIds = array();
+            foreach ($ratedItems as $ratedItem) {
+                array_push($ratedItemsIds, $ratedItem->product_id);
+            }
+
+            $toRecommendProducts = Rating::whereNot("user_id", Auth::user()->id)->get();
+            $toShowProducts = array();
+            foreach ($toRecommendProducts as $toRecommend) {
+                $itemScore = array();
+                $averageItemScore = array();
+
+                // naturally this gets all user that has rated the to recommend other than
+                // the user seeking recommendation since he/she have not rated it yet
+                $otherUserHasRated = Rating::where("product_id", $toRecommend->id)->get();
+                $usersHasRatedIdWithRating = array();
+                foreach ($otherUserHasRated as $otherUser) {
+                    $usersHasRatedIdWithRating[$otherUser->user_id] = $otherUser->rating;
+                }
+
+                $ratedItemsByOtherUser = Rating::whereIn("product_id", $ratedItemsIds)->whereNot("user_id", Auth::user()->id)->get();
+                foreach ($ratedItemsByOtherUser as $othersRated) {
+                    if (!array_key_exists($othersRated->user_id, $usersHasRatedIdWithRating)) {
+                        continue;
+                    }
+                    if (!array_key_exists($othersRated->product_id, $itemScore)) {
+                        $itemScore[$othersRated->product_id] = array();
+                    }
+                    array_push($itemScore[$othersRated->product_id], $usersHasRatedIdWithRating[$othersRated->user_id] - $othersRated->rating);
+                    // $itemsScore[$othersRated->id] = $usersHasRatedIdWithRating[$othersRated->user_id] - $othersRated->rating;
+                }
+
+                // we want to find the average now
+                foreach ($itemScore as $key => $score) {
+                    $len = sizeof($score);
+                    $sum = 0;
+                    foreach ($score as $scoreArr) {
+                        $sum += $scoreArr;
+                    }
+                    $averageItemScore[$key] = $sum / $len;
+                }
+
+                // we want to find the final score
+                $totalRatedItem = 0;
+                $total = 0;
+                foreach ($ratedItems as $rItem) {
+                    if (!array_key_exists($rItem->product_id, $averageItemScore)) {
+                        continue;
+                    }
+                    $totalRatedItem += $rItem->rating + $averageItemScore[$rItem->product_id];
+                    $total++;
+                }
+
+                if ($total != 0) {
+                    $final = $totalRatedItem / $total;
+                } else {
+                    $final = 0;
+                }
+                LoggerFacade::writeln($final);
+            }
         }
 
         $products = $products->get();

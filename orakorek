@@ -1,0 +1,20 @@
+get items that has not been rated by user (notRatedItem)
+get items that has been rated by the user (ratedItem)
+for each items (notRatedItem)
+    hashMap(itemScore)
+    hashMap(averageItemScore)
+    get otherUser that has rated the notRatedItem
+    store the otherUserID & the rating they gave
+    for each ratedItems that involves other users
+        find all user ratings that is in the ratedItem subset
+        for each ratings
+            itemScore[productId] = append(notRatedItem rating - ratings)
+    find the average for each itemScore, store in averageItemScore
+    totalRatedItem = 0
+    total = 0
+    for each ratedItem
+        add it with the hashMap[ratedItem->id]
+        total += added number
+        total++
+    return total / totalRatedItem
+
