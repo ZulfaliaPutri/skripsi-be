@@ -13,6 +13,7 @@ use App\Http\Controllers\PakaianController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProdukdashController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecommendController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\RekomendasilandingController;
@@ -61,4 +62,4 @@ Route::get('/produk/{id}', [ProdukController::class, 'index']);
 Route::post('/produk/{id}', [ProdukController::class, 'store'])->name("rate-product");
 Route::get('produkdash', [ProdukdashController::class, 'index']);
 
-Route::get('/test', [RekomendasiController::class, 'test']);
+Route::get('/test', [RecommendController::class, 'index']);

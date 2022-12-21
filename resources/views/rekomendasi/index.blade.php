@@ -98,23 +98,26 @@
         <div class="row mt-5">
             <div class="col-2 mt-5">
                 <form name="search-form" action="{{ route('rekomendasi') }}" method="GET">
-                    @method('GET')
                     <div class="list-group">
                         <label for="provinsi" class="form-label">Kategori</label>
                         <label class="list-group-item">
-                            <input name="category-1" class="form-check-input me-1" type="checkbox">
+                            <input name="category-1" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('category-1') ? 'checked' : '' }}>
                             Makanan Olahan
                         </label>
                         <label class="list-group-item">
-                            <input name="category-2" class="form-check-input me-1" type="checkbox">
+                            <input name="category-2" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('category-2') ? 'checked' : '' }}>
                             Makanan Instant
                         </label>
                         <label class="list-group-item">
-                            <input name="category-3" class="form-check-input me-1" type="checkbox">
+                            <input name="category-3" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('category-3') ? 'checked' : '' }}>
                             Pakaian Wanita
                         </label>
                         <label class="list-group-item">
-                            <input name="category-4" class="form-check-input me-1" type="checkbox">
+                            <input name="category-4" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('category-4') ? 'checked' : '' }}>
                             Pakaian Pria
                         </label>
                     </div>
@@ -124,29 +127,34 @@
                     <div class="list-group mt-3">
                         <label for="provinsi" class="form-label">Rating</label>
                         <label class="list-group-item">
-                            <input name="rating-1" class="form-check-input me-1" type="checkbox">
+                            <input name="rating-1" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('rating-1') ? 'checked' : '' }}>
                             <i class="fas fa-star"></i>
                         </label>
                         <label class="list-group-item">
-                            <input name="rating-2" class="form-check-input me-1" type="checkbox">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </label>
-                        <label class="list-group-item">
-                            <input name="rating-3" class="form-check-input me-1" type="checkbox">
-                            <i class="fas fa-star"></i>
+                            <input name="rating-2" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('rating-2') ? 'checked' : '' }}>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </label>
                         <label class="list-group-item">
-                            <input name="rating-4" class="form-check-input me-1" type="checkbox">
-                            <i class="fas fa-star"></i>
+                            <input name="rating-3" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('rating-3') ? 'checked' : '' }}>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </label>
                         <label class="list-group-item">
-                            <input name="rating-5" class="form-check-input me-1" type="checkbox">
+                            <input name="rating-4" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('rating-4') ? 'checked' : '' }}>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </label>
+                        <label class="list-group-item">
+                            <input name="rating-5" class="form-check-input me-1" type="checkbox"
+                                {{ request()->query('rating-5') ? 'checked' : '' }}>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -163,14 +171,14 @@
                             <div class="row gx-1">
                                 <div class="col-5">
                                     <input type="text" class="input-harga" name="minPrice" id="harga-min"
-                                        placeholder="Rp MIN">
+                                        placeholder="Rp MIN" value="{{ request()->query('minPrice') ?: '' }}">
                                 </div>
                                 <div class="col-2">
                                     <hr class="garis-harga">
                                 </div>
                                 <div class="col-5">
                                     <input type="text" class="input-harga" name="maxPrice" id="harga-max"
-                                        placeholder="Rp MAX">
+                                        placeholder="Rp MAX" value="{{ request()->query('maxPrice') ?: '' }}">
                                 </div>
                             </div>
                         </div>

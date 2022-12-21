@@ -40,9 +40,6 @@ class RekomendasiController extends Controller
             }
         }
 
-
-
-
         if (count($categories) > 0) {
             $products = $products->whereIn("category_id", $categories);
         }
@@ -57,10 +54,8 @@ class RekomendasiController extends Controller
             $products = $products->where("price", "<=", $maxPrice);
         }
 
-
         $products = $products->get();
         $finalProducts = array();
-
 
         foreach ($products as $product) {
             $rating = Helpers::getRatings($product->rating);
@@ -88,7 +83,7 @@ class RekomendasiController extends Controller
         // $ratingDataset = $this->getRatingDataset();
         // $slopeOnePrediction = $this->predictRating($ratingDataset, 3);
         $slopeOneResult = $this->produceSlopeOneResult();
-        // dd($slopeOneResult);
+        dd($slopeOneResult);
 
         /**
          * METODE ICHM
@@ -137,7 +132,7 @@ class RekomendasiController extends Controller
          * -> masukan dari proses 3 dan proses 4
          */
         $linearCombination = $this->linearComb($pearsonSimilarity, $adjCosineSimilarity, 0.5);
-        // dd($linearCombination);
+        dd($linearCombination);
 
         /**
          * 6. Prediksi Rating 
@@ -155,7 +150,7 @@ class RekomendasiController extends Controller
         // Loop through user ratings
         foreach (User::all() as $user) {
             $userRating = [];
-            foreach ($user->ratings as $rating) {
+            foreach ($user->rating as $rating) {
                 $userRating[strtolower(str_replace(' ', '_', $rating->product->name))] = (int) $rating->rating;
             }
             array_push($ratingDataset, $userRating);
@@ -178,11 +173,11 @@ class RekomendasiController extends Controller
 
         // Cari rating terakhir yang dimiliki authenticated user (current user)
         $user = User::find($userId);
-        $latestRatingIndex = count($user->ratings) - 1;
+        $latestRatingIndex = count($user->rating) - 1;
 
         if ($latestRatingIndex >= 0) {
             // Get latest rating done by user
-            $latestRating = $user->ratings[$latestRatingIndex];
+            $latestRating = $user->rating[$latestRatingIndex];
             $productId = strtolower(str_replace(' ', '_', $latestRating->product->name));
             $productRating = $latestRating->rating;
 
@@ -195,7 +190,8 @@ class RekomendasiController extends Controller
             // Convert result into absolute value
             return $this->absoluteValue($result[$productId]);
         } else {
-            throw new Exception("User doesn't have any rating yet!");
+            // throw new Exception("User doesn't have any rating yet!");
+            return $result;
         }
 
         return $result;
