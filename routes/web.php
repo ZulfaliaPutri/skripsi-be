@@ -47,8 +47,6 @@ Route::get('/rekomendasilanding', [RekomendasilandingController::class, 'index']
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('/profile', [ProfileController::class, 'index']);
-
 Route::get('/aboutus', [AboutController::class, 'index']);
 Route::get("/aboutdash", [AboutdashController::class, 'index']);
 

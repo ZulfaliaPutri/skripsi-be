@@ -31,6 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
+                </li>
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
@@ -43,16 +46,6 @@
                         </ul>
                     </li>
                 @endauth
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/food">Food</a></li>
-                        <li><a class="dropdown-item" href="/clothes">Clothes</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/aboutus">About Us</a>
                 </li>
@@ -93,22 +86,6 @@
     </nav>
     <!--Navbar Akhir-->
 
-    <!--Breadcrumb-->
-    <div class="container">
-        <nav aria-label="breadcrumb" style="background-color: #f9f9f9" class="mt-3">
-            <ol class="breadcrumb p-3">
-                <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="#" class="text-decoration-none">Kategori</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Produk</li>
-            </ol>
-        </nav>
-    </div>
-    <!--Akhir Breadcrumb-->
-
     <!--Single Produk-->
     <div class="container">
         <div class="row row-produk">
@@ -138,20 +115,12 @@
                     </a>
                 </div>
                 <h3 class="text-muted mb-3">Rp {{ $product->price }}</h3>
-                <button type="button" class="btn btn-dark btn-sm">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <span class="mx-2">2</span>
-                <button type="button" class="btn btn-success btn-sm">
-                    <i class="fas fa-plus"></i>
-                </button>
 
                 <div class="btn-produk mt-5">
                     <!-- <a href="#" class="btn btn-dark text-white btn-lg me-2 btn-custom"
               ><i class="fas fa-shopping-cart fs-6 me-2"></i>Masukkan
               Keranjang</a
             > -->
-                    <a href="#" class="btn btn-success text-white btn-lg btn-custom">Beli Sekarang</a>
                     @auth
                         <a class="btn btn-success text-white btn-lg btn-custom" data-toggle="modal" id="smallButton"
                             data-target="#smallModal" title="show">

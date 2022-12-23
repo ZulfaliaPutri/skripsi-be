@@ -31,15 +31,8 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/food">Food</a></li>
-                        <li><a class="dropdown-item" href="/clothes">Clothes</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/aboutus">About Us</a>
@@ -188,13 +181,11 @@
         <div class="banner-box">
             <h4>Pilih Produkmu</h4>
             <h2>Product Food</h2>
-            <button class="normal">Pilih Makanan</button>
         </div>
 
         <div class="banner-box banner-box2">
             <h4>Tentukkan Pilihan</h4>
             <h2>Product Clothes</h2>
-            <button class="normal">Pilih Koleksi</button>
         </div>
     </section>
     <!--Banner Bagi dua Selesai-->

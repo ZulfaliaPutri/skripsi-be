@@ -31,15 +31,8 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/makanan">Food</a></li>
-                        <li><a class="dropdown-item" href="/pakaian">Clothes</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
                 </li>
                 @auth
                     <li class="nav-item dropdown">
@@ -65,11 +58,6 @@
                             Welcome back, {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> My Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
                             <li>
                                 <form action="/logout" method="post">
                                     @csrf
@@ -183,8 +171,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-dark" id="button">TERAPKAN</button>
+                    <!--Button Submit-->
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="" class="btn btn-dark" id="button">TERAPKAN</button>
+                    </div>
+                    <!--Akhir Button Submit-->
 
                 </form>
                 <!--Chekbox Untuk Kategori-->
@@ -240,18 +231,25 @@
         </div>
 
         <!--Footer-->
-        <footer class="section-p4 pt-5">
+        <footer class="py-5 bg-dark">
             <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Sistem Manajemen Pengetahuan Silsilah Keluarga
+                    Puri Agung Peliatan 2022</p>
+            </div>
+            
+        </footer>
+        {{-- <footer class="section-p4 pt-5">
+            <div class="container" style="min-width: 100%">
                 <div class="row">
                     <div class="col">
                         <img class="logo" src="../assets/logo.png" alt="logo">
-                        <p>Website yang ditunjukkan untuk mendukung pengurangan limbah dan menjadikan kegiatan berbagi
-                            seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
+                        <p>Website yang ditunjukkan untuk mendukung pengurangan limbah
+                            dan menjadikan kegiatan berbagi seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
                     </div>
 
                     <div class="col">
                         <h4>Information</h4>
-                        <a href="/aboutus">About Us</a>
+                        <a href="/aboutdash">About Us</a>
                     </div>
 
                     <div class="col">
@@ -277,7 +275,8 @@
                     </div>
 
                 </div>
-        </footer>
+            </div>
+        </footer> --}}
         <!--Footer Akhir-->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

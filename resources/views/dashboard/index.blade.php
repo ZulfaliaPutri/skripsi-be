@@ -29,17 +29,10 @@
             </a>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/makanan">Food</a></li>
-                        <li><a class="dropdown-item" href="/pakaian">Clothes</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
@@ -62,11 +55,6 @@
                         Welcome back, {{ auth()->user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> My Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
                         <li>
                             <form action="/logout" method="post">
                                 @csrf
@@ -212,13 +200,11 @@
         <div class="banner-box">
             <h4>Pilih Produkmu</h4>
             <h2>Product Food</h2>
-            <a href="/makanan"><button class="normal">Pilih Makanan</button></a>
         </div>
 
         <div class="banner-box banner-box2">
             <h4>Tentukkan Pilihan</h4>
             <h2>Product Clothes</h2>
-            <a href="/pakaian"><button class="normal">Pilih Koleksi</button></a>
         </div>
     </section>
     <!--Banner Bagi dua Selesai-->
@@ -260,6 +246,7 @@
                 </div>
 
             </div>
+        </div>
     </footer>
     <!--Footer Akhir-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
