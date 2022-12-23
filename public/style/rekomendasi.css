@@ -149,6 +149,8 @@ body{
 
 footer{
     background-color: #A8B380;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 

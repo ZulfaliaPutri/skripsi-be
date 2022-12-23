@@ -231,15 +231,8 @@
         </div>
 
         <!--Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="section-p4 pt-5">
             <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; Sistem Manajemen Pengetahuan Silsilah Keluarga
-                    Puri Agung Peliatan 2022</p>
-            </div>
-            
-        </footer>
-        {{-- <footer class="section-p4 pt-5">
-            <div class="container" style="min-width: 100%">
                 <div class="row">
                     <div class="col">
                         <img class="logo" src="../assets/logo.png" alt="logo">
@@ -273,10 +266,9 @@
                         <p>2022, Website WeShare! - Sistem Rekomendasi <i>food sharing</i> dan <i>preloved clothes</i>
                         </p>
                     </div>
-
                 </div>
             </div>
-        </footer> --}}
+        </footer>
         <!--Footer Akhir-->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
