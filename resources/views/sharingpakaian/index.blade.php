@@ -224,43 +224,43 @@
     <!--Akhir CRUD-->
 
     <!--Footer-->
-    <!--Footer-->
     <footer class="section-p4 pt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <img class="logo" src="../assets/logo.png" alt="logo">
-                    <p>Website yang ditunjukkan untuk mendukung pengurangan limbah
-                        dan menjadikan kegiatan berbagi seperti <i>food sharing</i> dan <i>preloved clothes</i></p>
+        <div class="d-flex justify-content-between">
+            <div>
+                <img class="logo" src="../assets/logo.png" alt="logo">
+                <p>Website yang ditunjukkan untuk mendukung<br>pengurangan limbah dan menjadikan<br>kegiatan berbagi
+                    seperti <i>food sharing</i><br>dan <i>preloved clothes</i></p>
+            </div>
+            <div>
+                <h4>Information</h4>
+                <a href="/aboutdash">About Us</a>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <div>
+                    <i class="bi bi-envelope"></i> foodclothesshare@gmail.com</a>
                 </div>
-
-                <div class="col">
-                    <h4>Information</h4>
-                    <a href="/aboutdash">About Us</a>
-                </div>
-
-                <div class="col">
-                    <h4>Contact Us</h4>
-                    <a href="#"><i class="bi bi-envelope"></i> foodclothesshare@gmail.com</a>
+                <div>
                     <a href="#"><i class="bi bi-telephone"></i> 08657234589</a>
                 </div>
-                <div class="col">
-                    <div class="follow">
-                        <h4 class="">Media Social</h4>
-                        <div class="icon d-inline-block">
-                            <i class="fab fa-facebook-f"></i>
-                            <i class="fab fa-twitter"></i>
-                            <i class="fab fa-instagram"></i>
-                        </div>
+            </div>
+            <div>
+                <div class="follow">
+                    <h4 class="">Media Social</h4>
+                    <div class="d-flex justify-content-between">
+                        <div><i class="fab fa-facebook-f"></i></div>
+                        <div><i class="fab fa-twitter"></i></div>
+                        <div><i class="fab fa-instagram"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="copyright">
-                    <p>2022, Website WeShare! - Sistem Rekomendasi <i>food sharing</i> dan <i>preloved clothes</i></p>
-                </div>
-
+        </div>
+        <div class="row mt-5">
+            <div class="copyright">
+                <p>2022, Website WeShare! - Sistem Rekomendasi <i>food sharing</i> dan <i>preloved clothes</i>
+                </p>
             </div>
+        </div>
     </footer>
     <!--Footer Akhir-->
     <script type="text/javascript" src="JS/sharingpakaian.js"></script>
