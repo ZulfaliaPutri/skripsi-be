@@ -15,7 +15,7 @@ class SharingpakaianController extends Controller
     {
         $seller = Seller::where("user_id", Auth::user()->id)->first();
         if (!$seller) {
-            return view('sharingmakanan.index', [
+            return view('sharingpakaian.index', [
                 'title' => 'Sharingmakanan'
             ]);
         }

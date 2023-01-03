@@ -160,17 +160,51 @@ class RekomendasiController extends Controller
             $otherProducts = Product::with(["Category", "Rating"])->whereNotIn("id", $productIds)->get();
             $finalNormalProducts = array();
 
-            foreach ($otherProducts as $product) {
-                $rating = Helpers::getRatings($product->rating);
-                $product->rating = $rating;
-                array_push($finalNormalProducts, $product);
-            }
+            // artinya belum ada produk yang pernah di rating sama sekali
+            // return saja seperit biasa
+            if (count($finalToShowProducts) == 0) {
+                LoggerFacade::writeln("laravel kontol");
+                foreach ($otherProducts as $product) {
+                    $rating = Helpers::getRatings($product->rating);
+                    $product->rating = $rating;
+                    array_push($finalNormalProducts, $product);
+                }
 
-            return view('rekomendasi.index', [
-                'title' => 'Rekomendasi',
-                "productsRecommended" => $finalToShowProducts,
-                "products" => $otherProducts
-            ]);
+                return view('rekomendasi.index', [
+                    'title' => 'Rekomendasi',
+                    "productsRecommended" => $finalToShowProducts,
+                    "products" => $finalNormalProducts
+                ]);
+            } else {
+                // KNN dijalanin di sini
+                // TODO: buat KNN yg lebih perfect, dengan min-max preprocessing dulu
+                $contentBased = array();
+                foreach ($otherProducts as $product) {
+                    $rating = Helpers::getRatings($product->rating);
+                    $product->rating = $rating;
+                    if ($rating == null) {
+                        foreach ($finalToShowProducts as $slopeOneProduct) {
+                            if ($product->category_id == $slopeOneProduct->category_id) {
+                                $product->rating = $slopeOneProduct->rating;
+                                array_push($contentBased, $product);
+                                break;
+                            }
+                        }
+                    }
+                    array_push($finalNormalProducts, $product);
+                }
+
+                usort($contentBased, function ($a, $b) {
+                    return $a->rating > $b->rating;
+                });
+
+                return view('rekomendasi.index', [
+                    'title' => 'Rekomendasi',
+                    "productsRecommended" => $finalToShowProducts,
+                    "productsContentBased" => $contentBased,
+                    "products" => $finalNormalProducts
+                ]);
+            }
         }
 
         $products = $products->get();
