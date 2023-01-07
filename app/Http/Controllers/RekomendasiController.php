@@ -62,6 +62,10 @@ class RekomendasiController extends Controller
             $noFilter = false;
         }
 
+        if (!Auth::check()) {
+            $noFilter = false;
+        }
+
         if ($noFilter) {
             $ratedItems = Rating::where("user_id", Auth::user()->id)->get();
             if ($ratedItems->isEmpty()) {
