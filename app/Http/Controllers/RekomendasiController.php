@@ -163,7 +163,6 @@ class RekomendasiController extends Controller
             // artinya belum ada produk yang pernah di rating sama sekali
             // return saja seperit biasa
             if (count($finalToShowProducts) == 0) {
-                LoggerFacade::writeln("laravel kontol");
                 foreach ($otherProducts as $product) {
                     $rating = Helpers::getRatings($product->rating);
                     $product->rating = $rating;
