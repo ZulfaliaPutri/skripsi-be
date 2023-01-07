@@ -92,7 +92,8 @@
         <div class="row">
             <div class="col-4">
                 <!--Awal CRUD-->
-                <form method="POST" name="form" action="{{ route('sharing-pakaian') }}">
+                <form method="POST" name="form" action="{{ route('sharing-pakaian') }}"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <table>
@@ -166,8 +167,9 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="fotoProduk" class="form-label">Foto Produk</label>
-                                        <input class="form-control" type="file" id="fotoProduk" multiple>
+                                        <label for="image" class="form-label">Foto Produk</label>
+                                        <input class="form-control" name="image" type="file" id="image"
+                                            multiple>
                                     </div>
 
                                     <div>
@@ -209,7 +211,8 @@
                                     <th>{{ $product->clothes->size }}</th>
                                     <th>{{ $product->clothes->material }}</th>
                                     <th>nantian</th>
-                                    <th>{{ $product->description }}</th>
+                                    <th><img width="128"
+                                            src="{{ url('public/images/' . $product->image_path) }}" /></th>
                                 </tr>
                             @endforeach
                         @endif

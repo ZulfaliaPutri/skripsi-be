@@ -91,11 +91,11 @@
         <div class="row row-produk">
             <div class="col-lg-5">
                 <figure class="figure">
-                    <img src="{{ $product->image_path }}" class="figure-img img-fluid"
+                    <img src="{{ url('public/images/' . $product->image_path) }}" class="figure-img img-fluid"
                         style="border-radius: 5px; width: 450px" alt="produk babi" />
                     <figcaption class="figure-caption d-flex justify-content-evenly">
                         <a href="#">
-                            <img src="{{ $product->image_path }}" class="figure-img img-fluid"
+                            <img src="{{ url('public/images/' . $product->image_path) }}" class="figure-img img-fluid"
                                 style="border-radius: 5px; width: 70px" alt="produk babi" />
                         </a>
                     </figcaption>
@@ -213,7 +213,8 @@
         <div class="pro-container">
             @foreach ($productRecommendations as $item)
                 <div class="pro">
-                    <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
+                    <img src="{{ url('public/images/' . $item->image_path) }}" alt="produk olahan babi"
+                        height="132rem">
                     <div class="des">
                         <span>{{ $item['category']['name'] }}</span>
                         <h5>{{ $item['name'] }}</h5>

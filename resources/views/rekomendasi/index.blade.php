@@ -190,7 +190,8 @@
                             @if (isset($productsRecommended))
                                 @foreach ($productsRecommended as $item)
                                     <div class="pro">
-                                        <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
+                                        <img src="{{ url('public/images/' . $item->image_path) }}"
+                                            alt="produk olahan babi" height="132rem">
                                         <div class="des">
                                             <span>{{ $item['category']['name'] }}</span>
                                             <h5>{{ $item['name'] }}</h5>
@@ -210,7 +211,8 @@
                             @if (isset($productsContentBased))
                                 @foreach ($productsContentBased as $item)
                                     <div class="pro">
-                                        <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
+                                        <img src="{{ url('public/images/' . $item->image_path) }}"
+                                            alt="produk olahan babi" height="132rem">
                                         <div class="des">
                                             <span>{{ $item['category']['name'] }}</span>
                                             <h5>{{ $item['name'] }}</h5>
@@ -230,7 +232,8 @@
                         @endauth
                         @foreach ($products as $item)
                             <div class="pro">
-                                <img src="{{ $item['image_path'] }}" alt="produk olahan babi" height="132rem">
+                                <img src="{{ url('public/images/' . $item->image_path) }}" alt="produk olahan babi"
+                                    height="132rem">
                                 <div class="des">
                                     <span>{{ $item['category']['name'] }}</span>
                                     <h5>{{ $item['name'] }}</h5>

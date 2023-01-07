@@ -47,6 +47,13 @@ class SharingpakaianController extends Controller
         $product->price = $request->price;
         $product->view_count = 0;
 
+        $img = $request->file("image");
+        if ($img != null) {
+            $fileName = date('YmdHi') . $img->getClientOriginalName();
+            $img->move(public_path("public/images"), $fileName);
+            $product->image_path = $fileName;
+        }
+
         $clothes = new Clothes();
         $clothes->sleeve_type = $request->sleeve_type;
         $clothes->size = $request->size;

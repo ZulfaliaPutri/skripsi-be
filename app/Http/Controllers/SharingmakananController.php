@@ -51,6 +51,13 @@ class SharingmakananController extends Controller
         $food = new Food();
         $food->expired_day_count = $request->expired_day_count;
 
+        $img = $request->file("image");
+        if ($img != null) {
+            $fileName = date('YmdHi') . $img->getClientOriginalName();
+            $img->move(public_path("public/images"), $fileName);
+            $product->image_path = $fileName;
+        }
+
         $seller->product()->save($product);
         $product->food()->save($food);
 
