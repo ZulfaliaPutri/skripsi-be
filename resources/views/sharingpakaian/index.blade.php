@@ -32,15 +32,8 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/makanan">Food</a></li>
-                        <li><a class="dropdown-item" href="/pakaian">Clothes</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
@@ -53,7 +46,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/aboutdash">About Us</a>
+                    <a class="nav-link" href="/aboutus">About Us</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">

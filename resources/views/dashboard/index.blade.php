@@ -45,7 +45,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/aboutdash">About Us</a>
+                    <a class="nav-link" href="/aboutus">About Us</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
@@ -220,7 +220,7 @@
             </div>
             <div>
                 <h4>Information</h4>
-                <a href="/aboutdash">About Us</a>
+                <a href="/aboutus">About Us</a>
             </div>
             <div>
                 <h4>Contact Us</h4>

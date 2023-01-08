@@ -264,7 +264,7 @@
             </div>
             <div>
                 <h4>Information</h4>
-                <a href="/aboutdash">About Us</a>
+                <a href="/aboutus">About Us</a>
             </div>
             <div>
                 <h4>Contact Us</h4>

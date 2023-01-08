@@ -23,35 +23,81 @@
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/landingpage">
-                <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
-                WeShare!
-            </a>
+            @auth
+                <a class="navbar-brand" href="/dashboard">
+                    <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
+                    WeShare!
+                </a>
+            @endauth
+            @guest
+                <a class="navbar-brand" href="/landingpage">
+                    <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
+                    WeShare!
+                </a>
+            @endguest
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/food">Food</a></li>
-                        <li><a class="dropdown-item" href="/clothes">Clothes</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/aboutus">About Us</a>
-                </li>
+                {{-- di dalam menu untuk auth --}}
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sharing
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/sharingmakanan">Food</a></li>
+                            <li><a class="dropdown-item" href="/sharingpakaian">Clothes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus">About Us</a>
+                    </li>
+                @endauth
+                {{-- menu di dalam guest --}}
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus">About Us</a>
+                    </li>
+                @endguest
+
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register">Sign Up</a>
-                </li>
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Welcome back, {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <form action="/logout" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
+                                        Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endauth
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Sign Up</a>
+                    </li>
+                @endguest
             </ul>
         </div>
     </nav>
