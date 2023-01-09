@@ -55,11 +55,6 @@
                         Welcome back, {{ auth()->user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> My Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
                         <li>
                             <form action="/logout" method="post">
                                 @csrf
@@ -176,7 +171,6 @@
 
                                     <div class="form_action--button">
                                         <input type="submit" value="Submit">
-                                        <input type="reset" value="Reset">
                                     </div>
                                 </form>
 

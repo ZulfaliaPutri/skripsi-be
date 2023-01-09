@@ -86,11 +86,11 @@ input[type="reset"]:hover{
 
 button{
     background: #eee;
-    padding: 6px 12px;
-    margin: 15px 0 10px;
+    /* padding: 6px 12px;
+    margin: 15px 0 10px; */
     display: inline-block;
     border: none;
-    border-radius: 30px;
+    /* border-radius: 30px; */
     font-size: 1rem;
     cursor: pointer;
     outline: none; 

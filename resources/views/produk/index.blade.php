@@ -66,11 +66,6 @@
                             Welcome back, {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> My Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
                             <li>
                                 <form action="/logout" method="post">
                                     @csrf
@@ -169,7 +164,7 @@
         <!--Akhir Single Product-->
 
         <!--Deskripsi-->
-        <div class="row row-produk">
+        <div class="row row-produk mb-4">
             <div class="col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -194,7 +189,7 @@
                             {{-- clothes product --}}
                             <p>Bahan: {{ $product->clothes->material }}</p>
                             <p>Ukuran: {{ $product->clothes->size }}</p>
-                            <p>Ukuran Lengan: {{ $product->clothes->sleeve_type }}</p>
+                            <p>Panjang Lengan: {{ $product->clothes->sleeve_type }}</p>
                         @endif
 
                         <p class="deskripsi">
@@ -207,31 +202,6 @@
         </div>
     </div>
     <!--Akhir Deskripsi-->
-
-    <!--Rekomendasi Product-->
-    <section id="allproduct" class="section-p2">
-        <div class="pro-container">
-            @foreach ($productRecommendations as $item)
-                <div class="pro">
-                    <img src="{{ url('public/images/' . $item->image_path) }}" alt="produk olahan babi"
-                        height="132rem">
-                    <div class="des">
-                        <span>{{ $item['category']['name'] }}</span>
-                        <h5>{{ $item['name'] }}</h5>
-                        {{-- todo: change with actual calculation --}}
-                        <div class="star">
-                            @for ($i = 0; $i < $item['rating']; $i++)
-                                <i class="fas fa-star"></i>
-                            @endfor
-                        </div>
-                        <h4>Rp{{ $item['price'] }}</h4>
-                    </div>
-                    <a href="/produk/{{ $item['id'] }}"><i class="bi bi-cart cart"></i></a>
-                </div>
-            @endforeach
-        </div>
-    </section>
-    <!--Rekomendasi Product 1 Akhir-->
 
     <!--Footer-->
     <footer class="section-p4 pt-5">

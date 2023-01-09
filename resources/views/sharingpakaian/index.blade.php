@@ -17,7 +17,6 @@
     <!-- Import boostrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>WeShare!</title>
-    <title>WeShare!</title>
 </head>
 
 <body>
@@ -51,16 +50,11 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Welcome back, {{ auth()->user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
                         <li>
                             <form action="/logout" method="post">
                                 @csrf
@@ -174,7 +168,6 @@
 
                                     <div class="form_action--button">
                                         <input type="submit" value="Submit">
-                                        <input type="reset" value="Reset">
                                     </div>
                                 </form>
 
@@ -193,7 +186,6 @@
                             <th>Ukuran</th>
                             <th>Bahan</th>
                             <th>Foto Produk</th>
-                            <th>Deskripsi</th>
                         </tr>
                         @if (isset($ownedProducts))
                             @foreach ($ownedProducts as $product)
@@ -203,7 +195,6 @@
                                     <th>{{ $product->clothes->sleeve_type }}</th>
                                     <th>{{ $product->clothes->size }}</th>
                                     <th>{{ $product->clothes->material }}</th>
-                                    <th>nantian</th>
                                     <th><img width="128"
                                             src="{{ url('public/images/' . $product->image_path) }}" /></th>
                                 </tr>

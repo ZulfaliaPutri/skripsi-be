@@ -84,7 +84,7 @@
                 <div class="carousel-item active vh-100">
                     <img src="../assets/login3.jpg" class="img-cover" alt="..." />
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Tentukkan Pilihanmu</h5>
+                        <h5>Happy Shopping</h5>
                     </div>
                 </div>
             </div>
