@@ -23,16 +23,16 @@
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/landingpage">
+            <a class="navbar-brand" href="/">
                 <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                 WeShare!
             </a>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
+                    <a class="nav-link active" aria-current="page" href="/rekomendasi">Recommendation</a>
                 </li>
                 @auth
                     <li class="nav-item dropdown">

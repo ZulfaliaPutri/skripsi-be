@@ -23,16 +23,25 @@
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/dashboard">
-                <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
-                WeShare!
-            </a>
+            @auth
+                <a class="navbar-brand" href="/dashboard">
+                    <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
+                    WeShare!
+                </a>
+            @endauth
+            @guest
+                <a class="navbar-brand" href="/">
+                    <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
+                    WeShare!
+                </a>
+            @endguest
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    {{-- kalau hrefnya dikasih "dashboard maka akan auto login" --}}
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
+                    <a class="nav-link active" aria-current="page" href="/rekomendasi">Recommendation</a>
                 </li>
                 @auth
                     <li class="nav-item dropdown">

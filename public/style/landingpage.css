@@ -53,9 +53,6 @@ body{
     margin: 15px 0;
 }
 
-#olahan:hover{
-    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
-}
 
 #olahan p{
     padding: 9px 8px 6px 8px;
@@ -73,9 +70,6 @@ body{
     margin: 15px 0;
 }
 
-#instant:hover{
-    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
-}
 #instant p{
     padding: 9px 8px 6px 8px;
     line-height: 1;
@@ -92,9 +86,6 @@ body{
     margin: 15px 0;
 }
 
-#wanita:hover{
-    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
-}
 #wanita p{
     padding: 9px 8px 6px 8px;
     line-height: 1;
@@ -111,9 +102,6 @@ body{
     margin: 15px 0;
 }
 
-#pria:hover{
-    box-shadow: 10px 10px 54px rgba(163, 240, 169, 0.93);
-}
 #pria p{
     padding: 9px 8px 6px 8px;
     line-height: 1;

@@ -29,13 +29,13 @@
             </a>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                    <a class="nav-link dropdown-toggle active" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Sharing
                     </a>

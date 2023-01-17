@@ -30,7 +30,7 @@
                 </a>
             @endauth
             @guest
-                <a class="navbar-brand" href="/landingpage">
+                <a class="navbar-brand" href="/">
                     <img src="../assets/page.png" alt="" width="50" height="50" class="me-2" />
                     WeShare!
                 </a>
@@ -39,7 +39,7 @@
                 {{-- di dalam menu untuk auth --}}
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                        <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
@@ -55,19 +55,19 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/aboutus">About Us</a>
+                        <a class="nav-link active" href="/aboutus">About Us</a>
                     </li>
                 @endauth
                 {{-- menu di dalam guest --}}
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/landingpage">Home</a>
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/rekomendasi">Recommendation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/aboutus">About Us</a>
+                        <a class="nav-link active" href="/aboutus">About Us</a>
                     </li>
                 @endguest
 
@@ -170,7 +170,7 @@
             </div>
             <div>
                 <h4>Information</h4>
-                <a href="/aboutdash">About Us</a>
+                <a href="/aboutus">About Us</a>
             </div>
             <div>
                 <h4>Contact Us</h4>
