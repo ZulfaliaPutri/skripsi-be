@@ -142,6 +142,22 @@
                                         </select>
                                     </div>
 
+                                    <div class="mb-3" id="kabupaten">
+                                        <label for="kabupaten" class="form-label">Lokasi</label>
+                                        <select name="kabupaten" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="1">Denpasar</option>
+                                            <option value="2">Badung</option>
+                                            <option value="3">Gianyar</option>
+                                            <option value="4">Tabanan</option>
+                                            <option value="5">Klungkung</option>
+                                            <option value="6">Karangasem</option>
+                                            <option value="7">Bangli</option>
+                                            <option value="8">Buleleng</option>
+                                            <option value="9">Jembrana</option>
+                                        </select>
+                                    </div>
+
                                     <div>
                                         <label for="qty">
                                             Jumlah Barang
