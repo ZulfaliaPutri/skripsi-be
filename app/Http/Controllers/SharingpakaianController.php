@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\LoggerFacade;
+use App\Helpers\Helpers;
 use App\Models\Clothes;
 use App\Models\Product;
 use App\Models\Seller;
@@ -21,10 +22,16 @@ class SharingpakaianController extends Controller
         }
 
         $ownedProducts = Product::where("seller_id", $seller->id)->has("Clothes")->with(["Clothes"])->get();
+        $products = array();
+
+        foreach ($ownedProducts as $product) {
+            $product->regency = Helpers::getRegencyString($product->regency);
+            array_push($products, $product);
+        }
 
         return view('sharingpakaian.index', [
             'title' => 'Sharingpakaian',
-            'ownedProducts' => $ownedProducts,
+            'ownedProducts' => $products,
         ]);
     }
 
@@ -46,6 +53,7 @@ class SharingpakaianController extends Controller
         $product->quantity = $request->quantity;
         $product->price = $request->price;
         $product->view_count = 0;
+        $product->regency = $request->regency;
 
         $img = $request->file("image");
         if ($img != null) {

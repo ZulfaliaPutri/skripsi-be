@@ -142,9 +142,9 @@
                                         </select>
                                     </div>
 
-                                    <div class="mb-3" id="kabupaten">
-                                        <label for="kabupaten" class="form-label">Lokasi</label>
-                                        <select name="kabupaten" id="disabledSelect" class="form-select">
+                                    <div class="mb-3" id="regency">
+                                        <label for="regency" class="form-label">Lokasi</label>
+                                        <select name="regency" id="disabledSelect" class="form-select">
                                             <option selected>--Pilih Opsi--</option>
                                             <option value="1">Denpasar</option>
                                             <option value="2">Badung</option>
@@ -157,7 +157,6 @@
                                             <option value="9">Jembrana</option>
                                         </select>
                                     </div>
-
                                     <div>
                                         <label for="qty">
                                             Jumlah Barang
@@ -205,6 +204,7 @@
                             <th>Masa Penyimpanan</th>
                             <th>Jumlah Barang</th>
                             <th>Harga</th>
+                            <th>Lokasi</th>
                             <th>Foto Produk</th>
                         </tr>
                         @if (isset($ownedProducts))
@@ -215,6 +215,7 @@
                                     <th>{{ $product->food->expired_day_count }} Hari</th>
                                     <th>{{ $product->quantity }}</th>
                                     <th>{{ $product->price }}</th>
+                                    <th>{{ $product->regency }}</th>
                                     <th><img width="128"
                                             src="{{ url('public/images/' . $product->image_path) }}" /></th>
                                 </tr>

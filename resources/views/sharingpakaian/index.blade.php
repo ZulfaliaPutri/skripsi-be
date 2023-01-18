@@ -139,6 +139,22 @@
                                         </select>
                                     </div>
 
+                                    <div class="mb-3" id="regency">
+                                        <label for="regency" class="form-label">Lokasi</label>
+                                        <select name="regency" id="disabledSelect" class="form-select">
+                                            <option selected>--Pilih Opsi--</option>
+                                            <option value="1">Denpasar</option>
+                                            <option value="2">Badung</option>
+                                            <option value="3">Gianyar</option>
+                                            <option value="4">Tabanan</option>
+                                            <option value="5">Klungkung</option>
+                                            <option value="6">Karangasem</option>
+                                            <option value="7">Bangli</option>
+                                            <option value="8">Buleleng</option>
+                                            <option value="9">Jembrana</option>
+                                        </select>
+                                    </div>
+
                                     <div>
                                         <label for="qty">
                                             Jumlah Barang
@@ -185,6 +201,7 @@
                             <th>Panjang Lengan</th>
                             <th>Ukuran</th>
                             <th>Bahan</th>
+                            <th>Lokasi</th>
                             <th>Foto Produk</th>
                         </tr>
                         @if (isset($ownedProducts))
@@ -195,6 +212,7 @@
                                     <th>{{ $product->clothes->sleeve_type }}</th>
                                     <th>{{ $product->clothes->size }}</th>
                                     <th>{{ $product->clothes->material }}</th>
+                                    <th>{{ $product->regency }}</th>
                                     <th><img width="128"
                                             src="{{ url('public/images/' . $product->image_path) }}" /></th>
                                 </tr>

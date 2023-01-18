@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\LoggerFacade;
+use App\Helpers\Helpers;
 use App\Models\Food;
 use App\Models\Product;
 use App\Models\Seller;
@@ -21,10 +21,16 @@ class SharingmakananController extends Controller
         }
 
         $ownedProducts = Product::where("seller_id", $seller->id)->has("Food")->with(["Food"])->get();
+        $products = array();
+
+        foreach ($ownedProducts as $product) {
+            $product->regency = Helpers::getRegencyString($product->regency);
+            array_push($products, $product);
+        }
 
         return view('sharingmakanan.index', [
             'title' => 'Sharingmakanan',
-            'ownedProducts' => $ownedProducts,
+            'ownedProducts' => $products,
         ]);
     }
 
@@ -47,6 +53,7 @@ class SharingmakananController extends Controller
         $product->quantity = $request->quantity;
         $product->price = $request->price;
         $product->view_count = 0;
+        $product->regency = $request->regency;
 
         $food = new Food();
         $food->expired_day_count = $request->expired_day_count;
