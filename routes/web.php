@@ -60,4 +60,4 @@ Route::get('/produk/{id}', [ProdukController::class, 'index']);
 Route::post('/produk/{id}', [ProdukController::class, 'store'])->name("rate-product");
 Route::get('produkdash', [ProdukdashController::class, 'index']);
 
-Route::get('/test', [RecommendController::class, 'index']);
+Route::get('/try', [RecommendController::class, 'index']);
