@@ -212,6 +212,9 @@
                                             </div>
                                             <h4>Rp{{ $item['price'] }}</h4>
                                             <p>collaborative</p>
+                                            @if (isset($item['regencyName']))
+                                                <p>{{ $item['regencyName'] }}</p>
+                                            @endif
                                         </div>
                                         <a href="/produk/{{ $item['id'] }}"><i class="bi bi-cart cart"></i></a>
                                     </div>
@@ -233,6 +236,9 @@
                                             </div> --}}
                                             <h4>Rp{{ $item['price'] }}</h4>
                                             <p>content-based</p>
+                                            @if (isset($item['regencyName']))
+                                                <p>{{ $item['regencyName'] }}</p>
+                                            @endif
                                         </div>
                                         <a href="/produk/{{ $item['id'] }}"><i class="bi bi-cart cart"></i></a>
                                     </div>
@@ -253,6 +259,9 @@
                                         @endfor
                                     </div>
                                     <h4>Rp{{ $item['price'] }}</h4>
+                                    @if (isset($item['regencyName']))
+                                        <p>{{ $item['regencyName'] }}</p>
+                                    @endif
                                 </div>
                                 <a href="/produk/{{ $item['id'] }}"><i class="bi bi-cart cart"></i></a>
                             </div>
