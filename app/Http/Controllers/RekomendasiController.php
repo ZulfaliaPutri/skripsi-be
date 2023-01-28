@@ -19,7 +19,7 @@ use Phpml\Math\Distance\Euclidean;
 class RekomendasiController extends Controller
 {
 
-
+    private static $DEBUG_USER_REGENCY = 1;
 
     public function index(Request $request)
     {
@@ -75,6 +75,7 @@ class RekomendasiController extends Controller
                 foreach ($products as $product) {
                     $rating = Helpers::getRatings($product->rating);
                     $product->rating = $rating;
+                    $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
                     if ($ratingFound && array_key_exists($rating, $ratings)) {
                         array_push($finalProducts, $product);
                     } else if (!$ratingFound) {
@@ -158,6 +159,8 @@ class RekomendasiController extends Controller
             foreach ($toShowProducts as $key => $product) {
                 $rating = Helpers::getRatings($product['rating']);
                 $product->rating = $rating;
+                $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
+                $product->score = $key;
                 array_push($finalToShowProducts, $product);
             }
 
@@ -170,6 +173,7 @@ class RekomendasiController extends Controller
                 foreach ($otherProducts as $product) {
                     $rating = Helpers::getRatings($product->rating);
                     $product->rating = $rating;
+                    $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
                     array_push($finalNormalProducts, $product);
                 }
 
@@ -179,12 +183,12 @@ class RekomendasiController extends Controller
                     "products" => $finalNormalProducts
                 ]);
             } else {
-                // KNN dijalanin di sini
-                // TODO: buat KNN yg lebih perfect, dengan min-max preprocessing dulu
                 $contentBased = array();
                 foreach ($otherProducts as $product) {
                     $rating = Helpers::getRatings($product->rating);
                     $product->rating = $rating;
+                    $product->regencyName = Helpers::getRegencyString($product->regency);
+                    $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
                     if ($rating == null) {
                         foreach ($finalToShowProducts as $slopeOneProduct) {
                             if ($product->category_id == $slopeOneProduct->category_id) {
