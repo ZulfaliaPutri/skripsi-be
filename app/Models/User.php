@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rating::class);
     }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }

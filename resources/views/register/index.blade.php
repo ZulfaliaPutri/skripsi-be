@@ -55,6 +55,23 @@
                                 @enderror
                             </div>
 
+                            <!--Location-->
+                            <div>
+                                <label for="loaction" class="form-label">Location</label>
+                                <select type="loaction" class="form-select">
+                                    <option selected>Your Location</option>
+                                    <option value="1">Denpasar</option>
+                                    <option value="2">Badung</option>
+                                    <option value="3">Bangli</option>
+                                    <option value="4">Buleleng</option>
+                                    <option value="5">Gianyar</option>
+                                    <option value="6">Jembrana</option>
+                                    <option value="7">Karangasem</option>
+                                    <option value="8">Klungkung</option>
+                                    <option value="9">Tabanan</option>
+                                </select>
+                            </div>
+
                             <!--Password-->
                             <div>
                                 <label for="password" class="form-label">Password</label>
