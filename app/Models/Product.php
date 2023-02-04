@@ -40,9 +40,4 @@ class Product extends Model
     {
         return $this->hasOne(Clothes::class);
     }
-
-    public function location()
-    {
-        return $this->hasOne(Location::class);
-    }
 }
