@@ -66,6 +66,10 @@ class RekomendasiController extends Controller
             $noFilter = false;
         }
 
+        if (!empty($request->get('closest'))) {
+            $noFilter = false;
+        }
+
         if ($noFilter) {
             $ratedItems = Rating::where("user_id", Auth::user()->id)->get();
             if ($ratedItems->isEmpty()) {
@@ -225,6 +229,36 @@ class RekomendasiController extends Controller
             } else if (!$ratingFound) {
                 array_push($finalProducts, $product);
             }
+        }
+
+        if (!empty($request->get('closest'))) {
+            $productsWithRegency = array();
+            $productsWithoutRegency = array();
+            $user = Auth::user();
+
+            foreach ($products as $product) {
+                if ($product['regency'] != null) {
+                    LoggerFacade::writeln("bro");
+                    $product->regencyName = Helpers::getRegencyString($product->regency);
+                    $product->distance = Helpers::getRegencyDistanceByCode($user->regency, $product->regency);
+                    array_push($productsWithRegency, $product);
+                    continue;
+                }
+                array_push($productsWithoutRegency, $product);
+            }
+
+            usort($productsWithRegency, function ($item1, $item2) {
+                if ($item1->distance == $item2->distance) {
+                    return 0;
+                }
+                return ($item1->distance < $item2->distance) ? -1 : 1;
+            });
+
+            $finalWithRegencyProducts = array_merge($productsWithRegency, $productsWithoutRegency);
+            return view('rekomendasi.index', [
+                'title' => 'Rekomendasi',
+                "products" => $finalWithRegencyProducts
+            ]);
         }
 
         return view('rekomendasi.index', [
