@@ -54,7 +54,7 @@
                                     </div>
                                 @enderror
                             </div>
-
+                            {{-- 
                             <!--Location-->
                             <div>
                                 <label for="loaction" class="form-label">Location</label>
@@ -70,7 +70,7 @@
                                     <option value="8">Klungkung</option>
                                     <option value="9">Tabanan</option>
                                 </select>
-                            </div>
+                            </div> --}}
 
                             <!--Password-->
                             <div>
