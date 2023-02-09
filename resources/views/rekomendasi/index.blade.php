@@ -38,7 +38,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     {{-- kalau hrefnya dikasih "dashboard maka akan auto login" --}}
-                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/rekomendasi">Recommendation</a>
@@ -184,7 +184,7 @@
                     <div class="d-grid gap-2 mt-4">
                         <button type="" class="btn btn-dark" id="button">TERAPKAN</button>
                         <button name="closest" value="true" type="" class="btn btn-dark"
-                            id="button-jarak">Terdekat</button>
+                            id="button-jarak">LOKASI</button>
                     </div>
                     <!--Akhir Button Submit-->
 

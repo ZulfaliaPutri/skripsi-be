@@ -106,13 +106,13 @@
     </div>
     <!--Carousel Akhir-->
 
-    <!--Judul kategori-->
+    {{-- <!--Judul kategori-->
     <section id="judul" class="section-p1">
         <h2>Our Categories</h2>
     </section>
-    <!--Judul Akhir-->
+    <!--Judul Akhir--> --}}
 
-    <!--Kategori awal-->
+    {{-- <!--Kategori awal-->
     <div class="container overflow-hidden">
         <div class="row gx-5 text-center row-container">
             <div class="col-lg-3 col-md-3 col-sm-4 col-6">
@@ -154,7 +154,7 @@
         </div>
         </section>
     </div>
-    <!--Kategori Akhir-->
+    <!--Kategori Akhir--> --}}
 
     <!--All Product-->
     <section id="allproduct" class="container section-p2">
