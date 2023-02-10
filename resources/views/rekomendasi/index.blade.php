@@ -184,7 +184,7 @@
                     <div class="d-grid gap-2 mt-4">
                         <button type="" class="btn btn-dark" id="button">TERAPKAN</button>
                         <button name="closest" value="true" type="" class="btn btn-dark"
-                            id="button-jarak">LOKASI</button>
+                            id="button-jarak">Terdekat</button>
                     </div>
                     <!--Akhir Button Submit-->
 
