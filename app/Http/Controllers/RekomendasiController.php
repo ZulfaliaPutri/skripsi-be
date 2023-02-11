@@ -92,6 +92,7 @@ class RekomendasiController extends Controller
                     "products" => $finalProducts
                 ]);
             }
+
             $ratedItemsIds = array();
             foreach ($ratedItems as $ratedItem) {
                 array_push($ratedItemsIds, $ratedItem->product_id);
@@ -221,17 +222,28 @@ class RekomendasiController extends Controller
         $products = $products->get();
         $finalProducts = array();
 
-        foreach ($products as $product) {
-            $rating = Helpers::getRatings($product->rating);
+        foreach ($products as $product) { // olah data semua produk
+            $isRated = false;
+            if (Auth::check()){
+                $isRate = $product->Rating->firstWhere("user_id", auth()->id());
+                if ($isRate!=null){
+                    $isRated = true;
+                }
+            }
+            $rating = Helpers::getRatings($product->rating); // menambahkan rating attribute dari relasi rating pada array
             $product->rating = $rating;
-            if ($ratingFound && array_key_exists($rating, $ratings)) {
+            $product->isRated = $isRated;
+
+            if ($ratingFound && array_key_exists($rating, $ratings)) {  // >>> apa fungsinya if elsenya sama (?)
                 array_push($finalProducts, $product);
             } else if (!$ratingFound) {
                 array_push($finalProducts, $product);
             }
         }
 
-        if (!empty($request->get('closest'))) {
+//        dd($finalProducts);
+
+        if (!empty($request->get('closest'))) { // untuk filter terdekat
             $productsWithRegency = array();
             $productsWithoutRegency = array();
             $user = Auth::user();
@@ -289,7 +301,7 @@ class RekomendasiController extends Controller
 
         /**
          * 2. Group Rating
-         *  A. normalisasi nilai konten produk item 
+         *  A. normalisasi nilai konten produk item
          *  B. K mean clustering
          *      a. penglompokkan berdasarkan kedekatan antar item gunain K-MEANS CLUSTERING
          *      b. kemudian terdapat eucladean distance -> ini menemukan cluster
@@ -305,7 +317,7 @@ class RekomendasiController extends Controller
 
 
         /**
-         * 3. Similarity Item-rating 
+         * 3. Similarity Item-rating
          * -> ini masukan dari rating produk yang sudah di lakukan di algoritma slope one (Pearson correlation based similarity)
          */
         $itemRating = $this->removeLabel($slopeOneResult);
@@ -314,7 +326,7 @@ class RekomendasiController extends Controller
         // dd($pearsonSimilarity);
 
         /**
-         * 4. Similarity Group Rating 
+         * 4. Similarity Group Rating
          * -> adjusted cosine similarity menggunakan masuan group rating
          */
         $adjCosineSimilarity = $this->adjCosineSim($groupRating);
@@ -322,14 +334,14 @@ class RekomendasiController extends Controller
 
 
         /**
-         * 5. Kombinasi Linear Similarity 
+         * 5. Kombinasi Linear Similarity
          * -> masukan dari proses 3 dan proses 4
          */
         $linearCombination = $this->linearComb($pearsonSimilarity, $adjCosineSimilarity, 0.5);
         dd($linearCombination);
 
         /**
-         * 6. Prediksi Rating 
+         * 6. Prediksi Rating
          * -> menggunakan weighted average of deviation yang masukkannya dari item raing dan kombinasi linear similarity
          */
         $weightedAverageDeviation = $this->weightAvgDev($itemRating, $linearCombination);
