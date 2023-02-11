@@ -260,6 +260,9 @@
                                             <i class="fas fa-star"></i>
                                         @endfor
                                     </div>
+                                    @if($item['isRated'])
+                                        <p>collaborative</p>
+                                    @endif
                                     <h4>Rp{{ $item['price'] }}</h4>
                                     @if (isset($item['regencyName']))
                                         <p>{{ $item['regencyName'] }}</p>
