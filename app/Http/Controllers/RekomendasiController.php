@@ -273,8 +273,6 @@ class RekomendasiController extends Controller
             }
         }
 
-//        dd($finalProducts);
-
         if (!empty($request->get('closest'))) { // untuk filter terdekat
             $productsWithRegency = array();
             $productsWithoutRegency = array();
@@ -308,6 +306,30 @@ class RekomendasiController extends Controller
         return view('rekomendasi.index', [
             'title' => 'Rekomendasi',
             "products" => $finalProducts
+        ]);
+    }
+
+    public function testMea(Request $request)
+    {
+        $productId = $request->get("product_id");
+        if (empty($productId)){
+            return response()->json([
+                "data" => "product id harus diisi"
+            ]);
+        }
+
+        $products = Product::with("Rating")->findOrFail($productId);
+        $total = 0;
+        if (count($products->rating) > 0){
+            $prediksiRating = Helpers::getRatings($products->rating);
+            $tmpJumlah = 0;
+            foreach ($products->rating as $r){
+                $tmpJumlah += $prediksiRating - $r->rating;
+            }
+            $total = $tmpJumlah / count($products->rating);
+        }
+        return response()->json([
+            "data" => sprintf("Mea product %s adalah %f", $products->name, abs($total))
         ]);
     }
 
