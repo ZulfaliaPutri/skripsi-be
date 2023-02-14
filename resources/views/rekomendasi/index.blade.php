@@ -38,7 +38,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     {{-- kalau hrefnya dikasih "dashboard maka akan auto login" --}}
-                    <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/rekomendasi">Recommendation</a>
@@ -183,8 +183,14 @@
                     <!--Button Submit-->
                     <div class="d-grid gap-2 mt-4">
                         <button type="" class="btn btn-dark" id="button">TERAPKAN</button>
-                        <button name="closest" value="true" type="" class="btn btn-dark"
-                            id="button-jarak">Terdekat</button>
+                        @auth
+                            <button name="closest" value="true" type="" class="btn btn-dark"
+                                    id="button-jarak">Terdekat</button>
+                        @endauth
+                        @guest
+                            <a href="{{ route("login") }}" class="btn btn-dark"
+                                    id="button-jarak">Terdekat</a>
+                        @endguest
                     </div>
                     <!--Akhir Button Submit-->
 
@@ -198,6 +204,8 @@
                     <h3>Recommendation Product</h3>
                     <div class="pro-container">
                         @auth
+
+{{--                            // produk rekomendasi--}}
                             @if (isset($productsRecommended))
                                 @foreach ($productsRecommended as $item)
                                     <div class="pro">
@@ -222,6 +230,8 @@
                                     </div>
                                 @endforeach
                             @endif
+
+{{--                            // produk konten base--}}
                             @if (isset($productsContentBased))
                                 @foreach ($productsContentBased as $item)
                                     <div class="pro">
@@ -247,6 +257,8 @@
                                 @endforeach
                             @endif
                         @endauth
+
+{{--                        ini produk--}}
                         @foreach ($products as $item)
                             <div class="pro">
                                 <img src="{{ url('public/images/' . $item->image_path) }}" alt="produk olahan babi"
@@ -254,7 +266,7 @@
                                 <div class="des">
                                     <span>{{ $item['category']['name'] }}</span>
                                     <h5>{{ $item['name'] }}</h5>
-                                    {{-- todo: change with actual calculation --}}
+{{--                                     todo: change with actual calculation--}}
                                     <div class="star">
                                         @for ($i = 0; $i < $item['rating']; $i++)
                                             <i class="fas fa-star"></i>

@@ -71,7 +71,7 @@ class RekomendasiController extends Controller
         }
 
         if ($noFilter) {
-            $ratedItems = Rating::where("user_id", Auth::user()->id)->get();
+            $ratedItems = Rating::where("user_id", auth()->id())->get();
             if ($ratedItems->isEmpty()) {
                 $products = $products->get();
                 $finalProducts = array();
@@ -86,7 +86,6 @@ class RekomendasiController extends Controller
                         array_push($finalProducts, $product);
                     }
                 }
-
                 return view('rekomendasi.index', [
                     'title' => 'Rekomendasi',
                     "products" => $finalProducts
@@ -98,7 +97,7 @@ class RekomendasiController extends Controller
                 array_push($ratedItemsIds, $ratedItem->product_id);
             }
 
-            $toRecommendProducts = Rating::whereNot("user_id", Auth::user()->id)->get();
+            $toRecommendProducts = Rating::whereNot("user_id", auth()->id())->get();
             $toShowProducts = array();
             foreach ($toRecommendProducts as $toRecommend) {
                 $itemScore = array();
@@ -160,6 +159,7 @@ class RekomendasiController extends Controller
                 array_push($productIds, $key);
             }
 
+
             $finalToShowProducts = array();
             foreach ($toShowProducts as $key => $product) {
                 $rating = Helpers::getRatings($product['rating']);
@@ -181,7 +181,6 @@ class RekomendasiController extends Controller
                     $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
                     array_push($finalNormalProducts, $product);
                 }
-
                 return view('rekomendasi.index', [
                     'title' => 'Rekomendasi',
                     "productsRecommended" => $finalToShowProducts,
@@ -194,10 +193,10 @@ class RekomendasiController extends Controller
                     $product->rating = $rating;
                     $product->regencyName = Helpers::getRegencyString($product->regency);
                     $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
-                    if ($rating == null) {
+                    if ($rating == null) { // ini buat apa ka, kenapa amil dari finalShowProducts untuk ambil rating apa ada hubungannya sama algoritma (?)
                         foreach ($finalToShowProducts as $slopeOneProduct) {
                             if ($product->category_id == $slopeOneProduct->category_id) {
-                                $product->rating = $slopeOneProduct->rating;
+                                $product->rating = 0;
                                 array_push($contentBased, $product);
                                 break;
                             }
@@ -210,11 +209,44 @@ class RekomendasiController extends Controller
                     return $a->rating > $b->rating;
                 });
 
+                $tempProductIds = [];
+                foreach ($finalToShowProducts as $slopeOneProduct){
+                    $tempProductIds[] = $slopeOneProduct->id;
+                }
+
+                foreach ($contentBased as $slopeTwoProduct){
+                    $tempProductIds[] = $slopeTwoProduct->id;
+                }
+
+                foreach ($contentBased as  $e) {
+                    if ($e->id === 4 || $e->id === 7){
+                        dd($e);
+                    }
+                }
+
+                $filterred = collect($finalNormalProducts)->whereNotIn("id", $tempProductIds);
+                $filterred->all();
+
+                foreach ($filterred as $d){
+                    $tempProductIds[] = $d->id;
+                }
+
+
+                $notIntProductList = Product::with("rating")->whereNotIn("id", $tempProductIds)->get();
+                foreach ($notIntProductList as $product){
+                    $rating = Helpers::getRatings($product->rating);
+                    $product->rating = $rating;
+                    $product->regencyName = Helpers::getRegencyString($product->regency);
+                    $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
+                    $filterred->push($product);
+                }
+
+                $filterred->values()->all();
                 return view('rekomendasi.index', [
                     'title' => 'Rekomendasi',
                     "productsRecommended" => $finalToShowProducts,
                     "productsContentBased" => $contentBased,
-                    "products" => $finalNormalProducts
+                    "products" => $filterred
                 ]);
             }
         }
