@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('roles');
+        Schema::create('food', function (Blueprint $table) {
+            $table->comment('');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('expired_day_count');
+            $table->unsignedBigInteger('product_id');
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('food');
     }
 };

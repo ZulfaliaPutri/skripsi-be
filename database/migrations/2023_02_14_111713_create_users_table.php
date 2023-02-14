@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id()->unique();
+            $table->comment('');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -22,8 +23,10 @@ return new class extends Migration
             $table->unsignedInteger('age')->nullable();
             $table->char('gender', 1)->nullable();
             $table->string('address')->nullable();
-            $table->foreignId('role_id')->default(1);
             $table->timestamps();
+            $table->integer('regency')->nullable();
+
+            $table->unique(['id']);
         });
     }
 

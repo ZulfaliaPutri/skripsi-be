@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ratings', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('rating');
-            $table->foreignId('product_id');
-            $table->foreignId('user_id');
-            $table->timestamps();
+        Schema::create('locations', function (Blueprint $table) {
+            $table->comment('');
+            $table->bigIncrements('id');
+            $table->string('label');
+            $table->string('long');
+            $table->string('lat');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('locations');
     }
 };

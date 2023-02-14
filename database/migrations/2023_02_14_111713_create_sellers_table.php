@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('regency')->nullable(true);
+        Schema::create('sellers', function (Blueprint $table) {
+            $table->comment('');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('store_name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('regency');
-        });
+        Schema::dropIfExists('sellers');
     }
 };

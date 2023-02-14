@@ -14,16 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('seller_id');
+            $table->comment('');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('seller_id');
             $table->string('name');
             $table->text('description');
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('quantity')->nullable();
             $table->unsignedBigInteger('view_count');
-            $table->foreignId('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('image_path')->nullable();
             $table->timestamps();
+            $table->integer('regency')->nullable();
         });
     }
 

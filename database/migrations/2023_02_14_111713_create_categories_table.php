@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropColumns('users', 'role_id');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->comment('');
+            $table->bigIncrements('id');
+            $table->string('name');
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('categories');
     }
 };
