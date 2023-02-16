@@ -333,6 +333,47 @@ class RekomendasiController extends Controller
         ]);
     }
 
+    public function meaChart()
+    {
+        $products = Product::with("Rating")->get();
+
+        $total = [];
+
+        foreach ($products as $row){
+            if (count($row->rating) > 0){
+                $prediksiRating = Helpers::getRatings($row->rating);
+                $tmpJumlah = 0;
+                foreach ($row->rating as $r){
+                    $tmpJumlah += $prediksiRating - $r->rating;
+                }
+                $total[] = $tmpJumlah / count($row->rating);
+            }else{
+                $total[] = 0;
+            }
+        }
+
+        $chartjs = app()->chartjs
+            ->name('lineChartMea')
+            ->type('line')
+            ->size(['width' => 400, 'height' => 200])
+            ->labels($products->pluck("name")->toArray())
+            ->datasets([
+                [
+                    "label" => "Mea graph",
+                    'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                    'borderColor' => "rgba(38, 185, 154, 0.7)",
+                    "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $total,
+                ],
+            ])
+            ->options([]);
+
+        return view('example', compact('chartjs'));
+    }
+
     public function test()
     {
         /**

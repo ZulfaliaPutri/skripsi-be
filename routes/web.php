@@ -61,3 +61,4 @@ Route::post('/produk/{id}', [ProdukController::class, 'store'])->name("rate-prod
 Route::get('produkdash', [ProdukdashController::class, 'index']);
 
 Route::get('/try', [RecommendController::class, 'index']);
+Route::get('/chart', [RekomendasiController::class, 'meaChart']);
