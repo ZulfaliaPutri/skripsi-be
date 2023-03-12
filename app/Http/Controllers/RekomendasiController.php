@@ -78,7 +78,19 @@ class RekomendasiController extends Controller
 
                 foreach ($products as $product) {
                     $rating = Helpers::getRatings($product->rating);
+                    $total = 0;
+                    if (count($product->rating) > 0){
+                        $prediksiRating = Helpers::getRatings($product->rating);
+                        $tmpJumlah = 0;
+                        foreach ($product->rating as $r){
+                            $tmpJumlah += $prediksiRating - $r->rating;
+                        }
+                        $total = $tmpJumlah / count($product->rating);
+                    }
+
                     $product->rating = $rating;
+
+                    $product->mea = $total;
                     $product->regencyDistance = Helpers::getRegencyDistanceByCode(self::$DEBUG_USER_REGENCY, $product->regency);
                     if ($ratingFound && array_key_exists($rating, $ratings)) {
                         array_push($finalProducts, $product);
@@ -86,6 +98,7 @@ class RekomendasiController extends Controller
                         array_push($finalProducts, $product);
                     }
                 }
+
                 return view('rekomendasi.index', [
                     'title' => 'Rekomendasi',
                     "products" => $finalProducts

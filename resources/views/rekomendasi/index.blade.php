@@ -266,6 +266,7 @@
                                 <div class="des">
                                     <span>{{ $item['category']['name'] }}</span>
                                     <h5>{{ $item['name'] }}</h5>
+                                    <h5>Mea -> {{ abs($item['mea']) }}</h5>
 {{--                                     todo: change with actual calculation--}}
                                     <div class="star">
                                         @for ($i = 0; $i < $item['rating']; $i++)
